@@ -29,10 +29,11 @@ resume or a comparison of two settings much easier to trust.</p></div>
 <code>total_timesteps=10M</code>. But CleanRL counts agent steps, and each step is 4 frames: its Breakout results are for 40 M frames, like the
 PPO paper's. The run's flat score at 1.4 M frames prompted the check. The fix cost nothing but a restart from the latest checkpoint with a longer
 learning-rate schedule; found at 10 M frames, it would have cost 3 hours.</p></div>
-<div class="lesson"><h3>7. "The score" depends on the evaluation protocol</h3><p>At 15 M frames, the same model scored 185 on 20 games with the
-standard training wrappers (a lost life is an episode boundary, with a soft reset and automatic FIRE) and 139 on plain full games, where it has to
-relaunch the ball itself. Same model, same seeds, same scoring of the whole game; only what happens at a lost life differs. Since then every
-goal check runs both protocols and says which is which. And 10 games are noisy: on 10 games the same model averaged 86.5.</p></div>
+<div class="lesson"><h3>7. Ten games is a small sample</h3><p>At 15 M frames the goal check (10 games) scored 86.5 while the training games averaged about 150.
+A first comparison on 20 games suggested the evaluation protocol was to blame: 185 with the training wrappers (a lost life is an episode boundary with a soft reset
+and automatic FIRE) against 139 on plain full games. A bigger test, 64 games each, shrank that to 163 ± 13 against 146 ± 15: within the noise. Breakout scores
+spread by about 110 points per game, so a 10-game mean is only good to about ±35 points (one standard error). A small sample made a protocol effect look large,
+and its retelling had to be corrected. Both protocols are still checked, and the final claim names its protocol.</p></div>
 <h2 id="videos">Part 2 · Lesson videos: how it all works</h2>
 <p class="muted small">Each is under two minutes, narrated, with the transcript checked by Whisper. The PPO method itself is explained in the
 three videos on <a href="model.html">The model</a> tab; these cover the rest of the project.</p>
