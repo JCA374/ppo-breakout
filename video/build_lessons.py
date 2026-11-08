@@ -258,8 +258,8 @@ def l2_s5(t, T):
 
 
 # ------------------------------------------------------------------ lesson 4: speed and budgets
-def bars(d, x0, y0, w, h, items, vmax, unit=""):
-    bw = w / len(items)
+def bars(d, x0, y0, w, h, items, vmax, unit="", slots=3):
+    bw = w / slots
     for k, (lab, v, col) in enumerate(items):
         hh = h * v / vmax
         d.rectangle([x0 + k * bw + 20, y0 + h - hh, x0 + (k + 1) * bw - 20, y0 + h], fill=col)
