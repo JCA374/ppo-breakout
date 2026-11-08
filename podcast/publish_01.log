@@ -1,0 +1,11 @@
+[20:26:44] added docs/podcast/index.html
+[20:26:44] prep + narrate (Kokoro)
+[20:29:42] listen-check (Whisper)
+[20:31:11] pipeline stages PASS: 5/5
+[20:31:11] episode-01.mp3: 145 s
+1 episode(s)
+[20:31:15] waiting for GitHub Pages (46785f6c0b682f245d5e5002e771cca030829478)
+[20:32:02]   200 https://jca374.github.io/ppo-breakout/podcast/index.html
+[20:32:02]   200 https://jca374.github.io/ppo-breakout/podcast/episode-01.mp3
+[20:32:02]   200 https://jca374.github.io/ppo-breakout/data/podcast.json
+DEPLOYED https://jca374.github.io/ppo-breakout/podcast/index.html (episode 01: Measure first, and check the units, 145 s)

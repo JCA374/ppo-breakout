@@ -1,0 +1,14 @@
+title: 'Episode 01: Measure first, and check the units'
+kind: prose
+author: ''
+narrator: Kokoro TTS (af_heart)
+narration:
+  narrator: af_heart
+  speed: 0.95
+  paragraph_pause: 0.6
+chapters:
+  ch01: 'Episode 01: Measure first, and check the units'
+sources:
+  ch01:
+    path: /home/jonas/code/games/ppo/podcast/episode-01.md
+    sha1: 8bbea9a0303e3ddd390051089230ae0a6908d54e

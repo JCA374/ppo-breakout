@@ -1,1 +1,1 @@
-Then it plays again with the improved policy. Here, about two thousand four hundred rounds make ten million frames, close to two days of non-stop play, squeezed into a few hours on a laptop.
+Then it plays again with the improved policy. Here, nearly ten thousand rounds make forty million frames. That is more than a week of non-stop play, squeezed into one night on a laptop.

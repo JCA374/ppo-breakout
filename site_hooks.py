@@ -43,32 +43,33 @@ def replay_gif(policy_path, seed, out_gif):
 
 
 def models():
-    """Early, middle and late checkpoints of the main run, plus the goal-checked best."""
+    """Fixed milestones of the main run (so clips are rendered once, not every 500k frames): the earliest, the
+    three newest milestones reached, and the goal-checked best. At most 5 models x 6 games."""
     cks = checkpoints()
     if not cks:
         return []
-    picks = {}
-    targets = [500_000, 2_000_000, 5_000_000]
-    for tg in targets:
-        c = min(cks, key=lambda p: abs(_frames_of(p) - tg))
-        if abs(_frames_of(c) - tg) <= 600_000:
-            picks[c] = None
-    picks[cks[-1]] = None
+    by_f = {_frames_of(c): c for c in cks}
+    marks = [500_000, 2_000_000, 5_000_000, 10_000_000, 20_000_000, 30_000_000, 40_000_000]
+    reached = []
+    for m in marks:
+        near = [f for f in by_f if abs(f - m) <= 300_000]
+        if near:
+            reached.append(by_f[min(near, key=lambda f: abs(f - m))])
+    picks = [reached[0]] + [c for c in reached[-3:] if c != reached[0]]
     best = ROOT / "results" / "best.json"
-    note_best = None
+    best_path = None
     if best.exists():
         b = json.load(open(best))
         if (ROOT / b["policy"]).exists():
-            picks[str(ROOT / b["policy"])] = None
-            note_best = b["policy"]
+            best_path = str(ROOT / b["policy"])
+            if best_path not in picks:
+                picks.append(best_path)
     out = []
     for c in sorted(picks, key=_frames_of, reverse=True):
         f = _frames_of(c)
-        note = "newest checkpoint" if c == cks[-1] else "checkpoint"
-        if note_best and c.endswith(note_best):
-            note = "goal-checked best"
+        note = "goal-checked best model" if c == best_path else "checkpoint"
         out.append({"id": f"f{f // 1000:06d}k", "label": f"After {_fm(f)}", "path": c, "note": note})
-    return out[:5]
+    return out
 
 
 GAMES = [

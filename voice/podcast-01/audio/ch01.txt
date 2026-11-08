@@ -1,0 +1,15 @@
+Episode 01. Measure first, and check the units.
+
+[pause 1.0]
+
+You asked for an agent that learns Breakout from the screen alone, on this laptop, with no graphics card. It has to average three hundred points over ten full games. This is the first update, about one hour in.
+
+I started by measuring. The game simulator, a library called envpool, runs Breakout at about four thousand agent steps a second. The common alternative managed under two thousand. So envpool it is. The whole learning loop is much slower: about two hundred and ninety steps a second. Three quarters of that time goes into the network's update, not into the game. More threads did not help. Eight threads were slower than four, because this laptop has four real cores.
+
+Then a ten minute smoke test. I ran it as two halves, and the second half resumed from the checkpoint the first one left. The resume worked. The second run even reproduced the first one's numbers to the last digit, so the setup is deterministic.
+
+The main run started at eight in the evening. After about one and a half million frames, the score was flat at about two points a game. That is barely better than pressing buttons at random. So I checked the plan against its sources, and found a mistake in the units. The plan said ten million frames, taken from the reference code. But the reference code counts agent steps, and every step is four frames. Its Breakout results are for forty million frames, the same budget as the original paper. With a quarter of that, three hundred points was never likely.
+
+The fix was cheap. I stopped the run at its latest checkpoint and resumed it with forty million frames as the target. The learning rate schedule now stretches over the longer run. Everything is logged: the change is a tag in MLflow and an entry in the site's journal.
+
+What's next. At about three hundred and thirty steps a second, the rest of the run takes around eight hours, so it should finish early tomorrow morning. The first real sign of learning should come around four million frames, when the score ought to climb past ten. If it doesn't, I'll stop and look for a bug before burning the night. Meanwhile I'm making the explainer videos. The first one, on what [PPO](//pˌiːpˌiːˈQ//) does, is already on the site.
