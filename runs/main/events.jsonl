@@ -23,3 +23,6 @@
 {"t": "2026-11-08 22:28:22", "kind": "checkpoint", "frames": 10002432, "path": "checkpoints/main/model_010002k.pt", "score": 65.0, "champion": "checkpoints/main/model_010002k.pt"}
 {"t": "2026-11-08 22:37:23", "kind": "checkpoint", "frames": 10502144, "path": "checkpoints/main/model_010502k.pt", "score": ""}
 {"t": "2026-11-08 22:44:56", "kind": "checkpoint", "frames": 11001856, "path": "checkpoints/main/model_011001k.pt", "score": ""}
+{"t": "2026-11-08 22:53:08", "kind": "checkpoint", "frames": 11501568, "path": "checkpoints/main/model_011501k.pt", "score": 52.0}
+{"t": "2026-11-08 23:00:03", "kind": "checkpoint", "frames": 12001280, "path": "checkpoints/main/model_012001k.pt", "score": 52.0, "champion": "checkpoints/main/model_012001k.pt"}
+{"t": "2026-11-08 23:07:02", "kind": "checkpoint", "frames": 12500992, "path": "checkpoints/main/model_012500k.pt", "score": ""}

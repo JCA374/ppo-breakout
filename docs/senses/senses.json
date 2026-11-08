@@ -1,56 +1,56 @@
 {
- "ckpt": "main/model_011001k.pt",
+ "ckpt": "main/model_012500k.pt",
  "seed": 4242,
- "score": 57.0,
- "steps": 1246,
+ "score": 75.0,
+ "steps": 1212,
  "moments": [
   {
    "k": 0,
-   "step": 117,
-   "action": "NOOP",
+   "step": 116,
+   "action": "LEFT",
    "probs": [
-    0.817,
-    0.158,
-    0.023,
-    0.001
+    0.049,
+    0.071,
+    0.116,
+    0.764
    ],
-   "value": 2.852
+   "value": 1.818
   },
   {
    "k": 1,
-   "step": 413,
-   "action": "NOOP",
+   "step": 411,
+   "action": "LEFT",
    "probs": [
-    0.13,
-    0.162,
-    0.707,
-    0.001
+    0.002,
+    0.008,
+    0.0,
+    0.99
    ],
-   "value": 2.04
+   "value": 2.206
   },
   {
    "k": 2,
-   "step": 713,
-   "action": "LEFT",
+   "step": 706,
+   "action": "RIGHT",
    "probs": [
-    0.284,
-    0.329,
-    0.123,
-    0.264
+    0.158,
+    0.432,
+    0.273,
+    0.137
    ],
-   "value": 2.018
+   "value": 2.665
   },
   {
    "k": 3,
-   "step": 1062,
-   "action": "RIGHT",
+   "step": 1033,
+   "action": "LEFT",
    "probs": [
-    0.284,
-    0.123,
-    0.591,
-    0.002
+    0.176,
+    0.179,
+    0.0,
+    0.645
    ],
-   "value": 2.165
+   "value": 1.635
   }
  ]
 }
