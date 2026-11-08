@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+logs/
+publish_loop.pid
+runs/*/checkpoint*
+mlruns/
+checkpoints/
+logs_*.txt
+runs/*/supervisor.pid
+runs/*/DONE
+*.pt
+video/build/

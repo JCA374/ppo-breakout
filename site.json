@@ -1,0 +1,20 @@
+{
+  "title": "PPO Breakout",
+  "icon": "🧱",
+  "repo": "JCA374/ppo-breakout",
+  "deadline": "2026-11-09T15:45:00+01:00",
+  "deadline_text": "Monday 9 November, 15:45",
+  "goal": {"metric": "score", "target": 300, "label": "Mean score", "fmt": "num",
+           "columns": [["min", "Worst game"], ["max", "Best game"]]},
+  "goal_text": "mean of 10 full games (all 5 lives, unclipped score) on seeds never used in training",
+  "names": {},
+  "chart": {"x": "frames", "x_scale": 1e-6, "x_label": "million game frames (4 per agent step)", "y_label": "game score",
+            "series": [{"key": "ep_return_mean", "label": "training games (mean per iteration)", "style": "line", "color": "--accent", "scale": 1}]},
+  "cards": [{"label": "Frames", "key": "frames", "fmt": "M", "sub": "of 10 M"},
+            {"label": "Training score", "key": "ep_return_mean", "sub": "mean of games that ended this iteration"},
+            {"label": "Speed", "key": "sps", "sub": "agent steps / second"}],
+  "alive_pattern": "^.venv/bin/python ppo/train.py --run {run}( |$)",
+  "replay_seed": 3000777000,
+  "replay_kinds": ["checkpoint", "goal_check"],
+  "push_globs": ["runs/*/stats.csv", "runs/*/events.jsonl"]
+}

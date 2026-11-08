@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PPO Breakout</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<header class="hero">
+  <h1>Teaching a laptop to play Breakout from pixels with PPO</h1>
+  <p class="lede">An agent sees only the screen: four stacked 84×84 grayscale frames. It has to learn to move the paddle and
+break bricks. It is trained with <b>Proximal Policy Optimization (PPO)</b> on an 8-core laptop CPU with no GPU, for 10 million game frames
+(about 46 hours of play at 60 frames per second). <b>The goal:</b> a mean score of at least <b>300</b> over 10 full games
+(all 5 lives, unclipped score) on seeds it never trained on. Every run is tracked in MLflow; this page is rebuilt from that data every 15 minutes.</p>
+<p class="muted small">New here? Start with the three explainer videos on <a href="model.html">The model</a> tab. The finished
+agent plays on the <a href="play.html">Play</a> tab.</p>
+  <p class="countdown" id="countdown"></p>
+  <p class="muted" id="updated"></p>
+</header>
+<section class="cards" id="cards"></section>
+<section>
+  <h2>Goal table</h2>
+  <p class="muted">Every agent measured on episodes it never saw. The 95% interval is a Wilson interval.</p>
+  <div class="tablewrap"><table class="t" id="goaltable"></table></div>
+</section>
+<section>
+  <h2>Progress</h2>
+  <div class="chartbox"><div class="h"><canvas id="chart"></canvas></div></div>
+  <p class="muted small" id="chartnote"></p>
+</section>
+<section>
+  <h2>Training diagnostics <span class="muted small">from the MLflow run, exported to JSON</span></h2>
+  <p class="muted small">PPO's health signals per update: the approximate KL divergence between the old and new policy, the fraction of
+  samples whose probability ratio was clipped, the policy's entropy (how random it still is), the value loss, and how well the critic
+  explains the returns. Throughput is in agent steps per second (1 step = 4 frames).</p>
+  <div class="diag" id="diag"></div>
+  <div class="tablewrap"><table class="t" id="mlruns"></table></div>
+</section>
+<section>
+  <h2>Log <span class="muted small">newest first · replays play once, click to watch again</span></h2>
+  <div id="log"></div>
+</section>
+</main>
+<footer>Updated automatically every 15 minutes. The goal table is measured on fresh games, never estimated. Training-curve scores are from the games played while learning.</footer>
+<script src="site.js"></script>
+<script src="common.js"></script>
+<script src="project.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="app.js"></script>
+<script src="mlflow.js"></script>
+</body>
+</html>
