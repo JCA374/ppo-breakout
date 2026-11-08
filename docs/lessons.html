@@ -9,7 +9,9 @@
 <body>
 <main>
 <h1>Lessons</h1>
-<p class="lede">What this project taught, written down as it happened, in order.</p>
+<p class="lede">Two parts. <a href="#learned">Part 1</a>: what this project taught, written down as it happened.
+<a href="#videos">Part 2</a>: short narrated videos that explain how the project is set up and its harder parts, so you can follow every piece.</p>
+<h2 id="learned">Part 1 · Lessons learned in this project</h2>
 <div class="lesson"><h3>1. Measure before you optimise</h3><p>The plan allowed for porting the hot loop to a compiled language if 10 M frames
 wouldn't fit in 12 hours. A one-minute timing run showed 288 agent steps per second: 2.4 hours. The simulator (envpool, C++) alone was 14× faster
 than the whole loop, and three quarters of each iteration is PyTorch's backward pass. There was nothing to port.</p></div>
@@ -27,10 +29,29 @@ resume or a comparison of two settings much easier to trust.</p></div>
 <code>total_timesteps=10M</code>. But CleanRL counts agent steps, and each step is 4 frames: its Breakout results are for 40 M frames, like the
 PPO paper's. The run's flat score at 1.4 M frames prompted the check. The fix cost nothing but a restart from the latest checkpoint with a longer
 learning-rate schedule; found at 10 M frames, it would have cost 3 hours.</p></div>
+<h2 id="videos">Part 2 · Lesson videos: how it all works</h2>
+<p class="muted small">Each is under two minutes, narrated, with the transcript checked by Whisper. The PPO method itself is explained in the
+three videos on <a href="model.html">The model</a> tab; these cover the rest of the project.</p>
+<div id="lvids"></div>
 </main>
 <script src="site.js?v=c9181741"></script>
 <script src="common.js?v=448bd7f6"></script>
 <script src="project.js?v=e33f46d2"></script>
 
+<script>
+const LV = [['lesson1', 'How this project is set up', 'The trainer, the evaluator, the publisher and the studio; how they share files; crash recovery; the 15-minute site loop.'],
+  ['lesson2', 'From screen to input', 'Frame skip, max-pooling, grayscale, 84×84, the 4-frame stack, and the two shortcuts used only in training.'],
+  ['lesson3', "Reading PPO's health signals", "Entropy, KL, clip fraction and the critic's explained variance, with this run's real curves."],
+  ['lesson4', 'Speed and budgets', 'Measuring first, where the time goes, why more threads were slower, and the 10 M vs 40 M frames mistake.']];
+(async function () {
+  const out = [];
+  for (const [id, t, dsc] of LV) {
+    const ok = await fetch('video/' + id + '.mp4', { method: 'HEAD' }).then((r) => r.ok).catch(() => false);
+    out.push(ok ? `<figure class="vid"><h3>${t}</h3><video src="video/${id}.mp4" controls preload="metadata" playsinline></video><figcaption>${dsc}</figcaption></figure>`
+      : `<div class="box"><h3>${t}</h3><p class="muted">Coming soon. ${dsc}</p></div>`);
+  }
+  $('lvids').innerHTML = out.join('');
+})();
+</script>
 </body>
 </html>
