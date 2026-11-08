@@ -1,0 +1,1 @@
+["10M frames (25%): training score ~55; goal check mean 48.7 (min 16, max 89) on 10 unseen full games", "Goal checks so far: 5.4 (2.5M), 12.0 (5M), 33.8 (7.5M), 48.7 (10M)", "Approx KL ~0.004-0.006, clip fraction ~12%", "Lessons tab: part 1 lessons learned, part 2 narrated lesson videos (setup, screen to input, speed and budgets)"]
