@@ -9,7 +9,48 @@
 <body>
 <main>
 <h1>The model</h1>
-<p class="lede"><!-- WRITE: very educational, with examples: what the model is (a diagram), how it learns, what it is paid for, how it changed over time. Embed films here (video controls, never loop). --></p>
+<p class="lede">One small convolutional network, trained with Proximal Policy Optimization (PPO). Three short narrated videos
+explain the method with this run's own games and numbers; below them is the same material in text, with every setting.</p>
+<h2>The explainer videos</h2>
+<div id="films"></div>
+<h2>The network</h2>
+<div class="box">
+<p>The "Nature CNN" from DeepMind's 2015 DQN paper, with two heads. About 1.69 million weights; almost all of them (1.6 M) sit in the one dense layer.</p>
+<table class="t">
+<tr><th>Layer</th><th>Shape out</th><th>Weights</th><th>What it does</th></tr>
+<tr><td>Input</td><td>4 × 84 × 84</td><td>–</td><td>last 4 gray frames, bytes divided by 255</td></tr>
+<tr><td>Conv 8×8, stride 4, ReLU</td><td>32 × 20 × 20</td><td>8,224</td><td>coarse features: walls, bricks, the paddle, the ball's smear across frames</td></tr>
+<tr><td>Conv 4×4, stride 2, ReLU</td><td>64 × 9 × 9</td><td>32,832</td><td>combinations: "ball near the paddle", "a gap in the wall"</td></tr>
+<tr><td>Conv 3×3, stride 1, ReLU</td><td>64 × 7 × 7</td><td>36,928</td><td>finer positions</td></tr>
+<tr><td>Dense, ReLU</td><td>512</td><td>1,606,144</td><td>the summary of the situation both heads read</td></tr>
+<tr><td>Actor head</td><td>4</td><td>2,052</td><td>logits → probabilities for NOOP, FIRE, RIGHT, LEFT</td></tr>
+<tr><td>Critic head</td><td>1</td><td>513</td><td>value: discounted (clipped) reward still to come</td></tr>
+</table>
+<p class="muted small">Weights start orthogonal (gain √2; 0.01 for the actor so the first policy is almost uniform; 1 for the critic).</p>
+</div>
+<h2>How PPO learns, step by step</h2>
+<div class="box">
+<h3>1. Rollout</h3><p>8 games run side by side (envpool). For 128 steps the network picks every action by sampling from its own probabilities.
+That gives a batch of 1,024 moments: the observation, the action, its log-probability under the policy that chose it, the critic's value and the clipped reward.</p>
+<h3>2. Advantages with GAE</h3><p>For each moment, the one-step surprise is δ = r + γ·V(next) − V(now). The advantage adds up the future surprises, weighted down by (γλ)^k with γ = 0.99 and λ = 0.95:
+A = δ₀ + 0.94·δ₁ + 0.94²·δ₂ + … , stopping where a life ends. The value target is A + V. Advantages are normalised per minibatch (mean 0, std 1).</p>
+<h3>3. The clipped update</h3><p>The ratio ρ = π_new(a|s) / π_old(a|s) says how much more (or less) likely the action has become. PPO maximises
+min(ρ·A, clip(ρ, 0.9, 1.1)·A): once an action's probability has moved 10% in the direction the advantage asks for, the objective stops paying for more.
+Loss = −policy objective + 0.5 × value loss (also clipped) − 0.01 × entropy. Adam, gradient norm clipped at 0.5.</p>
+<h3>4. Repeat</h3><p>4 passes (epochs) over the batch in 4 shuffled minibatches of 256, so 16 gradient steps; then the batch is discarded. 2,441 iterations × 1,024 steps × 4 frames = 10 M frames.
+The learning rate falls linearly from 2.5·10⁻⁴ to 0.</p>
+</div>
+<h2>All settings</h2>
+<div class="tablewrap"><table class="t">
+<tr><th>Setting</th><th>Value</th><th>Setting</th><th>Value</th></tr>
+<tr><td>Frames</td><td>10,000,000</td><td>Parallel games</td><td>8</td></tr>
+<tr><td>Steps per rollout</td><td>128</td><td>Batch</td><td>1,024</td></tr>
+<tr><td>Epochs × minibatches</td><td>4 × 4 (256 each)</td><td>Learning rate</td><td>2.5·10⁻⁴ → 0, linear</td></tr>
+<tr><td>Clip ε</td><td>0.1 (policy and value)</td><td>γ, λ</td><td>0.99, 0.95</td></tr>
+<tr><td>Entropy coef</td><td>0.01</td><td>Value coef</td><td>0.5</td></tr>
+<tr><td>Max grad norm</td><td>0.5</td><td>Adam ε</td><td>1·10⁻⁵</td></tr>
+<tr><td>Seed</td><td>1</td><td>Source</td><td>CleanRL ppo_atari_envpool.py</td></tr>
+</table></div>
 </main>
 <script src="site.js?v=c9181741"></script>
 <script src="common.js?v=448bd7f6"></script>

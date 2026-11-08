@@ -1,0 +1,38 @@
+[
+ {
+  "scene": "ch01",
+  "title": "The task",
+  "file": "ch01.mp3",
+  "seconds": 16.927
+ },
+ {
+  "scene": "ch02",
+  "title": "One network, two heads",
+  "file": "ch02.mp3",
+  "seconds": 16.3
+ },
+ {
+  "scene": "ch03",
+  "title": "Collecting a rollout",
+  "file": "ch03.mp3",
+  "seconds": 17.842
+ },
+ {
+  "scene": "ch04",
+  "title": "Was it better than expected?",
+  "file": "ch04.mp3",
+  "seconds": 14.341
+ },
+ {
+  "scene": "ch05",
+  "title": "The careful update",
+  "file": "ch05.mp3",
+  "seconds": 24.216
+ },
+ {
+  "scene": "ch06",
+  "title": "Round after round",
+  "file": "ch06.mp3",
+  "seconds": 12.539
+ }
+]

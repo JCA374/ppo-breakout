@@ -9,8 +9,20 @@
 <body>
 <main>
 <h1>Lessons</h1>
-<p class="lede">What this project and earlier ones taught. Newest first.</p>
-<div class="box"><h3>From this project</h3><ul id="new"><!-- add lessons as they are learned --></ul></div>
+<p class="lede">What this project taught, written down as it happened, in order.</p>
+<div class="lesson"><h3>1. Measure before you optimise</h3><p>The plan allowed for porting the hot loop to a compiled language if 10 M frames
+wouldn't fit in 12 hours. A one-minute timing run showed 288 agent steps per second: 2.4 hours. The simulator (envpool, C++) alone was 14× faster
+than the whole loop, and three quarters of each iteration is PyTorch's backward pass. There was nothing to port.</p></div>
+<div class="lesson"><h3>2. More threads can be slower</h3><p>8 PyTorch threads ran at 225 steps/s, 4 threads at 288. The laptop has 4 physical cores;
+envpool's emulator threads and PyTorch's threads fight over them, and minibatches of 256 are too small to split 8 ways.</p></div>
+<div class="lesson"><h3>3. Test the resume before you need it</h3><p>The 10-minute smoke test ran as two 5-minute halves, the second resuming from
+the checkpoint the first left behind. The resume carries the optimizer state, the iteration (so the learning-rate schedule continues), the RNG
+states and the MLflow run id (so the curves continue in the same MLflow run).</p></div>
+<div class="lesson"><h3>4. Same seed, same numbers</h3><p>The main run reproduced the smoke test's numbers to the last digit for the iterations they share
+(for example iteration 80: KL 0.003878, clip fraction 0.140). envpool with a fixed seed and PyTorch on CPU are deterministic here, which makes a
+resume or a comparison of two settings much easier to trust.</p></div>
+<div class="lesson"><h3>5. MLflow 3 refuses its own file store</h3><p>MLflow 3.x raises an error for a <code>./mlruns</code> file store unless
+<code>MLFLOW_ALLOW_FILE_STORE=true</code> is set; it wants a database. The file store still works and is what this project uses; every script sets the variable.</p></div>
 </main>
 <script src="site.js?v=c9181741"></script>
 <script src="common.js?v=448bd7f6"></script>

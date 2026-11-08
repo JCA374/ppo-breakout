@@ -1,0 +1,164 @@
+{
+ "chapter": "ch04",
+ "model": "base.en",
+ "audio": "ch04.wav",
+ "duration": 14.3,
+ "script_sha1": "a885cb2e33a8994b71694bfbb8d987db9e3a4f14",
+ "audio_sha1": "432ef2733710af40e20df480f06cbb26dfc809be",
+ "checked": "2026-11-08",
+ "words": [],
+ "pace": [],
+ "stress": [],
+ "seconds": 5,
+ "transcript": [
+  [
+   " Next,",
+   0.0
+  ],
+  [
+   " every",
+   0.84
+  ],
+  [
+   " action",
+   0.94
+  ],
+  [
+   " gets",
+   1.4
+  ],
+  [
+   " a",
+   1.7
+  ],
+  [
+   " grade",
+   1.82
+  ],
+  [
+   " called",
+   2.08
+  ],
+  [
+   " the",
+   2.62
+  ],
+  [
+   " advantage.",
+   2.82
+  ],
+  [
+   " If",
+   4.06
+  ],
+  [
+   " the",
+   4.1
+  ],
+  [
+   " rewards",
+   4.2
+  ],
+  [
+   " that",
+   4.48
+  ],
+  [
+   " followed",
+   4.86
+  ],
+  [
+   " were",
+   5.28
+  ],
+  [
+   " better",
+   5.54
+  ],
+  [
+   " than",
+   5.78
+  ],
+  [
+   " the",
+   6.08
+  ],
+  [
+   " critic",
+   6.14
+  ],
+  [
+   " expected,",
+   6.3
+  ],
+  [
+   " the",
+   7.36
+  ],
+  [
+   " advantage",
+   7.48
+  ],
+  [
+   " is",
+   7.76
+  ],
+  [
+   " positive.",
+   8.18
+  ],
+  [
+   " If",
+   9.3
+  ],
+  [
+   " they",
+   9.34
+  ],
+  [
+   " were",
+   9.5
+  ],
+  [
+   " worse,",
+   9.62
+  ],
+  [
+   " it",
+   10.24
+  ],
+  [
+   " is",
+   10.28
+  ],
+  [
+   " negative.",
+   10.4
+  ],
+  [
+   " The",
+   11.54
+  ],
+  [
+   " critic's",
+   11.56
+  ],
+  [
+   " guess",
+   11.94
+  ],
+  [
+   " is",
+   12.14
+  ],
+  [
+   " the",
+   12.48
+  ],
+  [
+   " yardstick.",
+   12.64
+  ]
+ ],
+ "dismissed": []
+}
