@@ -1,0 +1,1 @@
+["20M frames (50%): goal check 229.7 (full game; min 63, max 384), 185.7 with training wrappers", "Correction: the protocol gap (185 vs 139 on 20 games) shrank to 163 vs 146 (SE ~14) on 64 games: mostly noise", "A 10-game mean has a standard error of ~35 points; checks now run under both protocols", "Run should finish around 06:00"]
