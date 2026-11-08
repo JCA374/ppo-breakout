@@ -1,0 +1,55 @@
+{
+ "t": "2026-11-08 22:31:14",
+ "policy": "checkpoints/main/model_010002k.pt",
+ "frames": 10002432,
+ "n": 10,
+ "score": 48.7,
+ "std": 22.216360337973153,
+ "ci": [
+  32.808477342935326,
+  64.59152265706467
+ ],
+ "min": 16.0,
+ "max": 89.0,
+ "scores": [
+  39.0,
+  69.0,
+  89.0,
+  38.0,
+  71.0,
+  47.0,
+  53.0,
+  39.0,
+  16.0,
+  26.0
+ ],
+ "lengths": [
+  1100,
+  1388,
+  1464,
+  1052,
+  1071,
+  1176,
+  1326,
+  1049,
+  640,
+  814
+ ],
+ "truncated": [
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false
+ ],
+ "seed": 12345,
+ "greedy": false,
+ "label": "after 10.0 M frames",
+ "note": "checkpoint check, seeds 12345-12354",
+ "seconds": 20.8
+}
