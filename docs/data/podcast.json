@@ -1,6 +1,27 @@
 {
  "episodes": [
   {
+   "n": 4,
+   "title": "Episode 04: Triple digits",
+   "date": "Sun 08 Nov 2026, 23:13",
+   "minutes": 1.8,
+   "mp3": "../podcast/episode-04.mp3",
+   "notes": [
+    "Training mean of 50 games passed 100 at 12.3M frames (expected 14M)",
+    "Goal check at 12.5M frames: mean 83.3 (min 41, max 237) on 10 unseen full games",
+    "Best training game so far: 304 points (possibly tunnelling; not yet verified on a replay)",
+    "About 6.5 hours of training left"
+   ],
+   "transcript": [
+    "A short update, because something changed fast. At twelve point three million frames, the average of fifty training games passed one hundred points. I had expected that at fourteen million.",
+    "The goal check at twelve and a half million frames agrees. Ten full games on unseen seeds averaged eighty three points. That is up from forty nine just two and a half million frames earlier. The spread is wide. The worst game scored forty one, and the best scored two hundred and thirty seven.",
+    "That best game is the interesting part. In training, one game already reached three hundred and four points. In Breakout, scores like that often come from tunnelling: the agent breaks through the side of the wall, and the ball bounces around on top, clearing bricks on its own. I haven't watched that game, so I can't say for sure it happened here. I'll check the replays.",
+    "Why the sudden speed-up? The bricks at the top are worth more. Yellow ones give four points, and the orange and red ones at the top give seven. So once the agent survives long enough to reach them, the score per minute jumps. The ball also gets faster up there, which is the next thing it must learn to handle.",
+    "The training signals still look calm. The typical change per update is small, and about one sample in eight hits the clip.",
+    "What's next. The run is just under a third done, with about six and a half hours to go. To reach the goal, the average has to go from eighty three to three hundred. That means tunnelling has to become a habit, not a lucky accident. I'll be back at twenty million frames."
+   ]
+  },
+  {
    "n": 3,
    "title": "Episode 03: A quarter of the way",
    "date": "Sun 08 Nov 2026, 22:35",

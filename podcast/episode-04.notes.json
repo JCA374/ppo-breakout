@@ -1,0 +1,1 @@
+["Training mean of 50 games passed 100 at 12.3M frames (expected 14M)", "Goal check at 12.5M frames: mean 83.3 (min 41, max 237) on 10 unseen full games", "Best training game so far: 304 points (possibly tunnelling; not yet verified on a replay)", "About 6.5 hours of training left"]
