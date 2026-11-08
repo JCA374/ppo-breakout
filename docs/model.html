@@ -37,13 +37,13 @@ A = δ₀ + 0.94·δ₁ + 0.94²·δ₂ + … , stopping where a life ends. The 
 <h3>3. The clipped update</h3><p>The ratio ρ = π_new(a|s) / π_old(a|s) says how much more (or less) likely the action has become. PPO maximises
 min(ρ·A, clip(ρ, 0.9, 1.1)·A): once an action's probability has moved 10% in the direction the advantage asks for, the objective stops paying for more.
 Loss = −policy objective + 0.5 × value loss (also clipped) − 0.01 × entropy. Adam, gradient norm clipped at 0.5.</p>
-<h3>4. Repeat</h3><p>4 passes (epochs) over the batch in 4 shuffled minibatches of 256, so 16 gradient steps; then the batch is discarded. 2,441 iterations × 1,024 steps × 4 frames = 10 M frames.
-The learning rate falls linearly from 2.5·10⁻⁴ to 0.</p>
+<h3>4. Repeat</h3><p>4 passes (epochs) over the batch in 4 shuffled minibatches of 256, so 16 gradient steps; then the batch is discarded. 9,765 iterations × 1,024 steps × 4 frames = 40 M frames.
+The learning rate falls linearly from 2.5·10⁻⁴ to 0 (the schedule was stretched from 10 M to 40 M frames at 1.5 M frames).</p>
 </div>
 <h2>All settings</h2>
 <div class="tablewrap"><table class="t">
 <tr><th>Setting</th><th>Value</th><th>Setting</th><th>Value</th></tr>
-<tr><td>Frames</td><td>10,000,000</td><td>Parallel games</td><td>8</td></tr>
+<tr><td>Frames</td><td>40,000,000 (10 M agent steps; first planned as 10 M frames)</td><td>Parallel games</td><td>8</td></tr>
 <tr><td>Steps per rollout</td><td>128</td><td>Batch</td><td>1,024</td></tr>
 <tr><td>Epochs × minibatches</td><td>4 × 4 (256 each)</td><td>Learning rate</td><td>2.5·10⁻⁴ → 0, linear</td></tr>
 <tr><td>Clip ε</td><td>0.1 (policy and value)</td><td>γ, λ</td><td>0.99, 0.95</td></tr>

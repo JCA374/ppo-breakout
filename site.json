@@ -10,7 +10,7 @@
   "names": {},
   "chart": {"x": "frames", "x_scale": 1e-6, "x_label": "million game frames (4 per agent step)", "y_label": "game score",
             "series": [{"key": "ep_return_mean", "label": "training games (mean per iteration)", "style": "line", "color": "--accent", "scale": 1}]},
-  "cards": [{"label": "Frames", "key": "frames", "fmt": "M", "sub": "of 10 M"},
+  "cards": [{"label": "Frames", "key": "frames", "fmt": "M", "sub": "of 40 M"},
             {"label": "Training score", "key": "ep_return_mean", "sub": "mean of games that ended this iteration"},
             {"label": "Speed", "key": "sps", "sub": "agent steps / second"}],
   "alive_pattern": "^.venv/bin/python ppo/train.py --run {run}( |$)",

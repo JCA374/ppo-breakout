@@ -7,7 +7,7 @@ echo $$ > publish_loop.pid
 while true; do
   if [ ! -e runs/main/DONE ] && ! pgrep -f "supervise.sh main" > /dev/null; then
     echo "$(date '+%F %T') watchdog: restarting supervise.sh main" >> logs/publish.log
-    setsid nohup ./supervise.sh main --torch-threads 4 > /dev/null 2>&1 < /dev/null &
+    setsid nohup ./supervise.sh main --torch-threads 4 --total-frames 40000000 > /dev/null 2>&1 < /dev/null &
   fi
   nice -n 15 .venv/bin/python publish.py --push >> logs/publish.log 2>&1
   sleep 900

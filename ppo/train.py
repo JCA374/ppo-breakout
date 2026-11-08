@@ -145,6 +145,12 @@ def main(argv=None):
         event(run_dir, "run_start", run=args.run, mlflow_run_id=mlrun.info.run_id, args=vars(args))
     else:
         event(run_dir, "resume", iteration=start_iter - 1, frames=4 * global_step)
+        old_total = st["args"]["total_frames"]
+        if old_total != args.total_frames:   # a deliberate change of the schedule: params are immutable, so a tag
+            note = (f"total_frames changed from {old_total} to {args.total_frames} at {4 * global_step} frames; "
+                    f"the linear learning-rate schedule now runs to the new total")
+            mlflow.set_tag(f"change_at_{4 * global_step}", note)
+            event(run_dir, "override", what=f"total frames {old_total / 1e6:g} M -> {args.total_frames / 1e6:g} M", reason=note)
     mlflow_run_id = mlrun.info.run_id
 
     envs = make_env(args.env_id, args.num_envs, args.seed + start_iter, args.env_threads)
@@ -267,7 +273,8 @@ def main(argv=None):
                 torch.save({"model": agent.state_dict(), "frames": frames_m, "iteration": iteration}, snap)
                 mlflow.log_artifact(str(snap), artifact_path="checkpoints")
                 event(run_dir, "checkpoint", frames=frames_m, path=str(snap.relative_to(ROOT)),
-                      champion=str(snap.relative_to(ROOT)), score=row["ep_return_mean"])
+                      score=row["ep_return_mean"],
+                      **({"champion": str(snap.relative_to(ROOT))} if (frames_m // args.ckpt_every) % 4 == 0 else {}))
                 while next_ckpt <= 4 * global_step:
                     next_ckpt += args.ckpt_every
         if stop:

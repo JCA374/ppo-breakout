@@ -194,19 +194,19 @@ def s6(t, T):
     fx = [int(r["frames"]) for r in ROWS]; fy = [float(r["ep_return_mean"]) for r in ROWS]
     # smooth over 20 iterations
     sy = [np.mean(fy[max(0, k - 20):k + 1]) for k in range(len(fy))]
-    ymax = max(50, max(sy) * 1.1) if sy else 50; xmax = 10e6
+    ymax = max(50, max(sy) * 1.1) if sy else 50; xmax = 40e6
     d.rectangle([x0, y0, x0 + w, y0 + h], outline=(50, 54, 64))
     for v in np.linspace(0, ymax, 5):
         yy = y0 + h - v / ymax * h; d.line([x0, yy, x0 + w, yy], fill=(36, 40, 48)); text(d, (x0 - 60, yy - 10), f"{v:.0f}", 15, MUTED)
-    for f in range(0, 11, 2):
+    for f in range(0, 41, 10):
         xx = x0 + f * 1e6 / xmax * w; text(d, (xx - 8, y0 + h + 8), f"{f}M", 15, MUTED)
     k = int(len(sy) * min(1, t / (T * 0.8)))
     pts = [(x0 + fx[j] / xmax * w, y0 + h - sy[j] / ymax * h) for j in range(k)]
     if len(pts) > 1:
         d.line(pts, fill=ACC, width=3)
     it = int(ROWS[k - 1]["iteration"]) if k else 0
-    text(d, (x0, 600), f"round {it:,} of 2,441 · score per game (mean of training games, smoothed)", 20, INK)
-    text(d, (x0, 640), "10 M frames ≈ 46 hours of play at 60 fps", 18, MUTED)
+    text(d, (x0, 600), f"round {it:,} of 9,765 · score per game (mean of training games, smoothed)", 20, INK)
+    text(d, (x0, 640), "40 M frames ≈ 185 hours of play at 60 fps", 18, MUTED)
     return im
 
 

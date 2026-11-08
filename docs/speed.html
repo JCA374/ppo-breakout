@@ -10,7 +10,7 @@
 <main>
 <h1>Speed</h1>
 <p class="lede">Everything runs on one laptop: <b>a laptop Intel i5-8250U (4 physical cores, 8 threads), 7 GB of RAM, no GPU</b>. The plan said: measure first, and only
-port code to a faster language if 10 M frames would not fit in about 12 hours. They fit in under 3 hours, so no port was needed.
+port code to a faster language if the training budget would not fit in about 12 hours. 10 M frames fit in under 3 hours; when the budget was raised to 40 M frames (see the log) that became about 9 hours, still inside the limit, so no port was needed.
 Every number below was measured on this machine.</p>
 <div class="box">
 <h3>1. The simulator: envpool vs gymnasium</h3>
@@ -40,8 +40,8 @@ don't help beyond 4: the CPU has only 4 physical cores (8 with hyperthreading), 
   const [e, t, m] = await Promise.all([get('env_bench.json'), get('thread_bench.json'), get('mlflow.json')]);
   if (e) $('envb').innerHTML = '<tr><th>Simulator</th><th>Parallel games</th><th>Agent steps / s</th><th>Frames / s</th></tr>' + Object.entries(e).map(([k, v]) => {
     const [lib, n] = k.split('_n'); return `<tr><td>${lib.replace('gym_async', 'gymnasium AsyncVectorEnv')}</td><td class="num">${n}</td><td class="num">${Math.round(v).toLocaleString()}</td><td class="num">${Math.round(4 * v).toLocaleString()}</td></tr>`; }).join('');
-  if (t) $('thb').innerHTML = '<tr><th>PyTorch threads</th><th>Rollout (s)</th><th>Update (s)</th><th>Agent steps / s</th><th>10 M frames would take</th></tr>' + ['4', '6', '8'].map((k) =>
-    `<tr><td class="num">${k}</td><td class="num">${t.rollout_s[k]}</td><td class="num">${t.update_s[k]}</td><td class="num">${t.agent_steps_per_sec['torch_threads_' + k]}</td><td class="num">${(2.5e6 / t.agent_steps_per_sec['torch_threads_' + k] / 3600).toFixed(1)} h</td></tr>`).join('');
+  if (t) $('thb').innerHTML = '<tr><th>PyTorch threads</th><th>Rollout (s)</th><th>Update (s)</th><th>Agent steps / s</th><th>40 M frames would take</th></tr>' + ['4', '6', '8'].map((k) =>
+    `<tr><td class="num">${k}</td><td class="num">${t.rollout_s[k]}</td><td class="num">${t.update_s[k]}</td><td class="num">${t.agent_steps_per_sec['torch_threads_' + k]}</td><td class="num">${(1e7 / t.agent_steps_per_sec['torch_threads_' + k] / 3600).toFixed(1)} h</td></tr>`).join('');
   const exp = m && m.experiments.find((x) => x.name === 'ppo-breakout');
   const r = exp && exp.runs.find((x) => x.curves && x.curves.sps);
   if (!r || !window.Chart) return;

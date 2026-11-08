@@ -11,8 +11,8 @@
 <header class="hero">
   <h1>Teaching a laptop to play Breakout from pixels with PPO</h1>
   <p class="lede">An agent sees only the screen: four stacked 84×84 grayscale frames. It has to learn to move the paddle and
-break bricks. It is trained with <b>Proximal Policy Optimization (PPO)</b> on an 8-core laptop CPU with no GPU, for 10 million game frames
-(about 46 hours of play at 60 frames per second). <b>The goal:</b> a mean score of at least <b>300</b> over 10 full games
+break bricks. It is trained with <b>Proximal Policy Optimization (PPO)</b> on an 8-core laptop CPU with no GPU, for 40 million game frames
+(about 185 hours of play at 60 frames per second; first planned as 10 million, see the log). <b>The goal:</b> a mean score of at least <b>300</b> over 10 full games
 (all 5 lives, unclipped score) on seeds it never trained on. Every run is tracked in MLflow; this page is rebuilt from that data every 15 minutes.</p>
 <p class="muted small">New here? Start with the three explainer videos on <a href="model.html">The model</a> tab. The finished
 agent plays on the <a href="play.html">Play</a> tab.</p>

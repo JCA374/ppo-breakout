@@ -23,6 +23,10 @@ states and the MLflow run id (so the curves continue in the same MLflow run).</p
 resume or a comparison of two settings much easier to trust.</p></div>
 <div class="lesson"><h3>5. MLflow 3 refuses its own file store</h3><p>MLflow 3.x raises an error for a <code>./mlruns</code> file store unless
 <code>MLFLOW_ALLOW_FILE_STORE=true</code> is set; it wants a database. The file store still works and is what this project uses; every script sets the variable.</p></div>
+<div class="lesson"><h3>6. Check the units of a borrowed budget</h3><p>The plan said "10 M frames", taken from CleanRL's
+<code>total_timesteps=10M</code>. But CleanRL counts agent steps, and each step is 4 frames: its Breakout results are for 40 M frames, like the
+PPO paper's. The run's flat score at 1.4 M frames prompted the check. The fix cost nothing but a restart from the latest checkpoint with a longer
+learning-rate schedule; found at 10 M frames, it would have cost 3 hours.</p></div>
 </main>
 <script src="site.js?v=c9181741"></script>
 <script src="common.js?v=448bd7f6"></script>
