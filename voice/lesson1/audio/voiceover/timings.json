@@ -1,0 +1,32 @@
+[
+ {
+  "scene": "ch01",
+  "title": "The pieces",
+  "file": "ch01.mp3",
+  "seconds": 19.696
+ },
+ {
+  "scene": "ch02",
+  "title": "The trainer",
+  "file": "ch02.mp3",
+  "seconds": 18.207
+ },
+ {
+  "scene": "ch03",
+  "title": "Surviving a crash",
+  "file": "ch03.mp3",
+  "seconds": 19.043
+ },
+ {
+  "scene": "ch04",
+  "title": "Testing honestly",
+  "file": "ch04.mp3",
+  "seconds": 14.576
+ },
+ {
+  "scene": "ch05",
+  "title": "The website",
+  "file": "ch05.mp3",
+  "seconds": 19.722
+ }
+]

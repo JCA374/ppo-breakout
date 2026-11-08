@@ -1,0 +1,1 @@
+This project has four parts that run on their own. A trainer that plays and learns. An evaluator that tests the agent on games it has never seen. A publisher that turns the logs into this website. And a small studio that makes the videos and podcasts. They talk to each other only through files on disk.

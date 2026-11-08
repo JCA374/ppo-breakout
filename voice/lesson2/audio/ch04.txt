@@ -1,0 +1,1 @@
+One picture can't show motion. So the input is the last four pictures together. From the small shifts between them, the network can tell where the ball is heading, and how fast.

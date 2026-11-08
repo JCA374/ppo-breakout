@@ -1,0 +1,35 @@
+title: From screen to input
+kind: voiceover
+author: ''
+narrator: Kokoro TTS (af_heart)
+narration:
+  narrator: af_heart
+  speed: 1.05
+  paragraph_pause: 0.6
+chapters:
+  ch01: The raw screen
+  ch02: Skip and merge
+  ch03: Shrink to gray
+  ch04: Stack four
+  ch05: Two training shortcuts
+sources:
+  ch01:
+    path: /home/jonas/code/games/ppo/video/lesson2/script.md
+    sha1: af83ea8f2e6828f8a704093c56ebd71d6b4f0ada
+    section: The raw screen
+  ch02:
+    path: /home/jonas/code/games/ppo/video/lesson2/script.md
+    sha1: af83ea8f2e6828f8a704093c56ebd71d6b4f0ada
+    section: Skip and merge
+  ch03:
+    path: /home/jonas/code/games/ppo/video/lesson2/script.md
+    sha1: af83ea8f2e6828f8a704093c56ebd71d6b4f0ada
+    section: Shrink to gray
+  ch04:
+    path: /home/jonas/code/games/ppo/video/lesson2/script.md
+    sha1: af83ea8f2e6828f8a704093c56ebd71d6b4f0ada
+    section: Stack four
+  ch05:
+    path: /home/jonas/code/games/ppo/video/lesson2/script.md
+    sha1: af83ea8f2e6828f8a704093c56ebd71d6b4f0ada
+    section: Two training shortcuts

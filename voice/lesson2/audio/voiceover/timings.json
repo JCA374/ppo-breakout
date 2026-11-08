@@ -1,0 +1,32 @@
+[
+ {
+  "scene": "ch01",
+  "title": "The raw screen",
+  "file": "ch01.mp3",
+  "seconds": 9.953
+ },
+ {
+  "scene": "ch02",
+  "title": "Skip and merge",
+  "file": "ch02.mp3",
+  "seconds": 18.077
+ },
+ {
+  "scene": "ch03",
+  "title": "Shrink to gray",
+  "file": "ch03.mp3",
+  "seconds": 8.333
+ },
+ {
+  "scene": "ch04",
+  "title": "Stack four",
+  "file": "ch04.mp3",
+  "seconds": 11.259
+ },
+ {
+  "scene": "ch05",
+  "title": "Two training shortcuts",
+  "file": "ch05.mp3",
+  "seconds": 18.573
+ }
+]

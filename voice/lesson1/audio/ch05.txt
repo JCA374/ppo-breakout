@@ -1,0 +1,1 @@
+Every fifteen minutes, the publisher reads [MLflow](//ˈɛm ˈɛlflˈQ//) and exports it to small data files. It renders replays and saliency maps at low priority, so training keeps the processor. Then it commits and pushes, and GitHub Pages serves the result. The same loop restarts the trainer if it ever finds it gone.

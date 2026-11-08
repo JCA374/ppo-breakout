@@ -1,0 +1,1 @@
+One round of [PPO](//pˌiːpˌiːˈQ//) takes about three and a half seconds. Less than one second of that is playing. The rest is the update: sixteen passes of backpropagation through the network.

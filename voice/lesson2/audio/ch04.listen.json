@@ -1,0 +1,144 @@
+{
+ "chapter": "ch04",
+ "model": "base.en",
+ "audio": "ch04.wav",
+ "duration": 11.2,
+ "script_sha1": "bf282cd8eba0a02e34ce99111c7080fade9a4c98",
+ "audio_sha1": "973471ea426ee7c608c9b8f3119bad2a16561fd5",
+ "checked": "2026-11-08",
+ "words": [],
+ "pace": [],
+ "stress": [],
+ "seconds": 5,
+ "transcript": [
+  [
+   " One",
+   0.0
+  ],
+  [
+   " picture",
+   0.4
+  ],
+  [
+   " can't",
+   0.72
+  ],
+  [
+   " show",
+   1.26
+  ],
+  [
+   " motion,",
+   1.44
+  ],
+  [
+   " so",
+   2.34
+  ],
+  [
+   " the",
+   2.58
+  ],
+  [
+   " input",
+   2.7
+  ],
+  [
+   " is",
+   2.94
+  ],
+  [
+   " the",
+   3.26
+  ],
+  [
+   " last",
+   3.4
+  ],
+  [
+   " four",
+   3.66
+  ],
+  [
+   " pictures",
+   4.0
+  ],
+  [
+   " together.",
+   4.32
+  ],
+  [
+   " From",
+   5.34
+  ],
+  [
+   " the",
+   5.46
+  ],
+  [
+   " small",
+   5.58
+  ],
+  [
+   " shifts",
+   5.78
+  ],
+  [
+   " between",
+   6.16
+  ],
+  [
+   " them,",
+   6.44
+  ],
+  [
+   " the",
+   7.04
+  ],
+  [
+   " network",
+   7.22
+  ],
+  [
+   " can",
+   7.46
+  ],
+  [
+   " tell",
+   7.74
+  ],
+  [
+   " where",
+   7.96
+  ],
+  [
+   " the",
+   8.22
+  ],
+  [
+   " ball",
+   8.32
+  ],
+  [
+   " is",
+   8.48
+  ],
+  [
+   " heading",
+   8.76
+  ],
+  [
+   " and",
+   9.02
+  ],
+  [
+   " how",
+   9.46
+  ],
+  [
+   " fast.",
+   9.64
+  ]
+ ],
+ "dismissed": []
+}

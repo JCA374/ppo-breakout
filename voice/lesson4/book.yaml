@@ -1,0 +1,35 @@
+title: Speed and budgets
+kind: voiceover
+author: ''
+narrator: Kokoro TTS (af_heart)
+narration:
+  narrator: af_heart
+  speed: 1.05
+  paragraph_pause: 0.6
+chapters:
+  ch01: Measure first
+  ch02: Where the time goes
+  ch03: More threads, slower
+  ch04: The budget's units
+  ch05: What it costs
+sources:
+  ch01:
+    path: /home/jonas/code/games/ppo/video/lesson4/script.md
+    sha1: 15eb4642487d50c3d8181ce853ef314e2aecb232
+    section: Measure first
+  ch02:
+    path: /home/jonas/code/games/ppo/video/lesson4/script.md
+    sha1: 15eb4642487d50c3d8181ce853ef314e2aecb232
+    section: Where the time goes
+  ch03:
+    path: /home/jonas/code/games/ppo/video/lesson4/script.md
+    sha1: 15eb4642487d50c3d8181ce853ef314e2aecb232
+    section: More threads, slower
+  ch04:
+    path: /home/jonas/code/games/ppo/video/lesson4/script.md
+    sha1: 15eb4642487d50c3d8181ce853ef314e2aecb232
+    section: The budget's units
+  ch05:
+    path: /home/jonas/code/games/ppo/video/lesson4/script.md
+    sha1: 15eb4642487d50c3d8181ce853ef314e2aecb232
+    section: What it costs

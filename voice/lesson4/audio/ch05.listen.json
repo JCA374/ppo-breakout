@@ -1,0 +1,156 @@
+{
+ "chapter": "ch05",
+ "model": "base.en",
+ "audio": "ch05.wav",
+ "duration": 12.7,
+ "script_sha1": "1d49c4b20053629d687119f284f9d00f4ffa81b8",
+ "audio_sha1": "48c45b9bb97eee0103f8926ef50a514ab478ff77",
+ "checked": "2026-11-08",
+ "words": [],
+ "pace": [],
+ "stress": [],
+ "seconds": 5,
+ "transcript": [
+  [
+   " Forty",
+   0.0
+  ],
+  [
+   " million",
+   0.4
+  ],
+  [
+   " frames",
+   0.82
+  ],
+  [
+   " take",
+   1.18
+  ],
+  [
+   " about",
+   1.6
+  ],
+  [
+   " nine",
+   1.8
+  ],
+  [
+   " hours",
+   2.04
+  ],
+  [
+   " here,",
+   2.44
+  ],
+  [
+   " one",
+   3.02
+  ],
+  [
+   " night.",
+   3.14
+  ],
+  [
+   " Because",
+   4.2
+  ],
+  [
+   " that",
+   4.2
+  ],
+  [
+   " fits",
+   4.44
+  ],
+  [
+   " the",
+   4.76
+  ],
+  [
+   " time",
+   4.94
+  ],
+  [
+   " limit,",
+   5.16
+  ],
+  [
+   " nothing",
+   5.9
+  ],
+  [
+   " had",
+   6.26
+  ],
+  [
+   " to",
+   6.46
+  ],
+  [
+   " be",
+   6.62
+  ],
+  [
+   " rewritten",
+   6.74
+  ],
+  [
+   " in",
+   7.04
+  ],
+  [
+   " a",
+   7.34
+  ],
+  [
+   " faster",
+   7.4
+  ],
+  [
+   " language.",
+   7.6
+  ],
+  [
+   " Measuring",
+   8.94
+  ],
+  [
+   " first",
+   9.26
+  ],
+  [
+   " saved",
+   9.6
+  ],
+  [
+   " a",
+   9.96
+  ],
+  [
+   " day",
+   10.16
+  ],
+  [
+   " of",
+   10.34
+  ],
+  [
+   " work",
+   10.46
+  ],
+  [
+   " that",
+   10.7
+  ],
+  [
+   " wasn't",
+   10.94
+  ],
+  [
+   " needed.",
+   11.26
+  ]
+ ],
+ "dismissed": []
+}

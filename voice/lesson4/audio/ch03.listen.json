@@ -1,0 +1,108 @@
+{
+ "chapter": "ch03",
+ "model": "base.en",
+ "audio": "ch03.wav",
+ "duration": 8.4,
+ "script_sha1": "1ff9c3849c63c59be406591c2a2c96b4b159ff7d",
+ "audio_sha1": "982c7670c517e264e66a250c90b9c63aef29335f",
+ "checked": "2026-11-08",
+ "words": [],
+ "pace": [],
+ "stress": [],
+ "seconds": 5,
+ "transcript": [
+  [
+   " Eight",
+   0.0
+  ],
+  [
+   " threads",
+   0.46
+  ],
+  [
+   " for",
+   0.68
+  ],
+  [
+   " the",
+   0.94
+  ],
+  [
+   " network",
+   1.04
+  ],
+  [
+   " were",
+   1.28
+  ],
+  [
+   " slower",
+   1.58
+  ],
+  [
+   " than",
+   1.86
+  ],
+  [
+   " four.",
+   2.2
+  ],
+  [
+   " This",
+   3.32
+  ],
+  [
+   " laptop",
+   3.32
+  ],
+  [
+   " has",
+   3.6
+  ],
+  [
+   " four",
+   4.08
+  ],
+  [
+   " real",
+   4.34
+  ],
+  [
+   " cores,",
+   4.54
+  ],
+  [
+   " and",
+   5.5
+  ],
+  [
+   " the",
+   5.54
+  ],
+  [
+   " game's",
+   5.62
+  ],
+  [
+   " own",
+   6.0
+  ],
+  [
+   " threads",
+   6.14
+  ],
+  [
+   " need",
+   6.38
+  ],
+  [
+   " them",
+   6.72
+  ],
+  [
+   " too.",
+   6.88
+  ]
+ ],
+ "dismissed": []
+}

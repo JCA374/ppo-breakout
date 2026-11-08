@@ -1,0 +1,1 @@
+Every two and a half million frames, the evaluator plays ten full games with that checkpoint. All five lives count, the score is not clipped, and the game seeds were never used in training. Those results fill the goal table.

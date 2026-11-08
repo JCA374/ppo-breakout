@@ -1,0 +1,35 @@
+title: How this project is set up
+kind: voiceover
+author: ''
+narrator: Kokoro TTS (af_heart)
+narration:
+  narrator: af_heart
+  speed: 1.05
+  paragraph_pause: 0.6
+chapters:
+  ch01: The pieces
+  ch02: The trainer
+  ch03: Surviving a crash
+  ch04: Testing honestly
+  ch05: The website
+sources:
+  ch01:
+    path: /home/jonas/code/games/ppo/video/lesson1/script.md
+    sha1: f1eb6cf08c9a5845cb9b98f066377e9d7d5246b0
+    section: The pieces
+  ch02:
+    path: /home/jonas/code/games/ppo/video/lesson1/script.md
+    sha1: f1eb6cf08c9a5845cb9b98f066377e9d7d5246b0
+    section: The trainer
+  ch03:
+    path: /home/jonas/code/games/ppo/video/lesson1/script.md
+    sha1: f1eb6cf08c9a5845cb9b98f066377e9d7d5246b0
+    section: Surviving a crash
+  ch04:
+    path: /home/jonas/code/games/ppo/video/lesson1/script.md
+    sha1: f1eb6cf08c9a5845cb9b98f066377e9d7d5246b0
+    section: Testing honestly
+  ch05:
+    path: /home/jonas/code/games/ppo/video/lesson1/script.md
+    sha1: f1eb6cf08c9a5845cb9b98f066377e9d7d5246b0
+    section: The website

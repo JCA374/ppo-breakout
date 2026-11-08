@@ -1,0 +1,1 @@
+Forty million frames take about nine hours here, one night. Because that fits the time limit, nothing had to be rewritten in a faster language. Measuring first saved a day of work that wasn't needed.

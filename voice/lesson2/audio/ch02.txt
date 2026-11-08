@@ -1,0 +1,1 @@
+The agent chooses only on every fourth frame, and its button is held for all four. The rewards of those frames are added up. The last two frames are merged by keeping the brighter pixel. The Atari draws some objects only on every other frame, and this way the ball never disappears.

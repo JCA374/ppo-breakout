@@ -1,0 +1,32 @@
+[
+ {
+  "scene": "ch01",
+  "title": "Measure first",
+  "file": "ch01.mp3",
+  "seconds": 13.427
+ },
+ {
+  "scene": "ch02",
+  "title": "Where the time goes",
+  "file": "ch02.mp3",
+  "seconds": 11.833
+ },
+ {
+  "scene": "ch03",
+  "title": "More threads, slower",
+  "file": "ch03.mp3",
+  "seconds": 8.411
+ },
+ {
+  "scene": "ch04",
+  "title": "The budget's units",
+  "file": "ch04.mp3",
+  "seconds": 17.685
+ },
+ {
+  "scene": "ch05",
+  "title": "What it costs",
+  "file": "ch05.mp3",
+  "seconds": 12.774
+ }
+]

@@ -1,0 +1,1 @@
+Training uses two shortcuts that the test does not. When a life is lost, the training episode ends, so losing the ball looks like the end of the world. And every reward is clipped to one, so a red brick counts the same as a blue one. The test plays all five lives, and counts the real score.

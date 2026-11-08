@@ -1,0 +1,1 @@
+A small shell script, the supervisor, watches the trainer. If the trainer dies, the supervisor starts it again from the latest checkpoint. The checkpoint holds the network, the optimizer, the step count, the random number state and the [MLflow](//ˈɛm ˈɛlflˈQ//) run. So the run continues as if nothing had happened.

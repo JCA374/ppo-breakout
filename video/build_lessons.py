@@ -123,27 +123,41 @@ def l1_s4(t, T):
 
 def l1_s5(t, T):
     im, d = canvas(); header(d, "The website", "publish_loop.sh: every 15 minutes")
-    steps = [("export MLflow → JSON", 0), ("goal checks + replays + saliency (nice)", 1), ("git commit + push", 2),
-             ("GitHub Pages builds the site", 3), ("wait 15 minutes", 4)]
-    cx, cy, R = 640, 400, 230
-    for k, (s, i) in enumerate(steps):
-        a = -np.pi / 2 + i * 2 * np.pi / 5
-        x, y = cx + R * np.cos(a), cy + R * np.sin(a)
-        on = appear(t, T, k, 5, 0.05, 0.7)
-        box(d, x - 150, y - 34, 300, 68, s, "", ACC if on else PANEL, True, BG if on else MUTED)
-    if t > T * 0.75:
-        text(d, (cx, cy), "watchdog: restart", 18, WARN, anchor="mm"); text(d, (cx, cy + 26), "the trainer if gone", 18, WARN, anchor="mm")
+    steps = ["export MLflow → JSON", "goal checks, replays,\nsaliency (low priority)", "git commit + push", "GitHub Pages\nbuilds the site"]
+    for k, s_ in enumerate(steps):
+        on = appear(t, T, k, 4, 0.05, 0.6)
+        x = 60 + k * 300
+        lines = s_.split("\n")
+        box(d, x, 220, 260, 110, lines[0], "\n".join(lines[1:]), ACC if on else PANEL, True, BG if on else MUTED)
+        if k < 3:
+            arrow(d, (x + 262, 275), (x + 298, 275), MUTED)
+    if t > T * 0.65:
+        d.line([1180, 330, 1180, 420, 190, 420], fill=WARN, width=3); arrow(d, (190, 420), (190, 332), WARN)
+        text(d, (560, 432), "wait 15 minutes, then again", 18, WARN)
+    if t > T * 0.8:
+        text(d, (60, 520), "the same loop is a watchdog: if the trainer's supervisor is gone", 20, INK)
+        text(d, (60, 552), "and the run isn't finished, it starts it again", 20, INK)
     return im
 
 
 # ------------------------------------------------------------------ lesson 2: from screen to input
+def ball_visible(f):
+    reg = f[100:188, 8:152]
+    return int(((reg[..., 0] > 150) & (reg[..., 1] < 100)).sum()) > 0
+
+
 def raw_frames():
+    """Raw frames with the ball in play: FIRE to launch, then follow the ball with the paddle (RAM 99 = ball x, 72 = paddle x)."""
     import gymnasium as gym, ale_py
     gym.register_envs(ale_py)
     env = gym.make("BreakoutNoFrameskip-v4", repeat_action_probability=0.0)
     env.reset(seed=3); fr = []
-    for k in range(200):
-        o, *_ = env.step(1 if k in (0, 60) else (2 if (k // 20) % 2 else 3))
+    ale = env.unwrapped.ale
+    for k in range(700):
+        ram = ale.getRAM()
+        bx, px = int(ram[99]), int(ram[72])
+        a = 1 if k % 40 == 0 else (2 if bx > px + 8 else 3 if bx < px + 4 else 0)
+        o, *_ = env.step(a)
         fr.append(o)
     env.close()
     return fr
@@ -152,7 +166,8 @@ def raw_frames():
 if LESSON == "lesson2":
     import cv2
     RAW = raw_frames()
-    base = 120
+    vis = [ball_visible(f) for f in RAW]
+    base = next(k for k in range(100, len(RAW) - 80) if all(vis[k:k + 80]))
 
 
 def gray84(rgb):
