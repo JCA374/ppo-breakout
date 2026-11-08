@@ -4,16 +4,56 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How it sees</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=50944cfd">
 </head>
 <body>
 <main>
 <h1>How it sees</h1>
-<p class="lede"><!-- WRITE: every input the model gets, what it is, and the rule that it only sees what it may (with the test that checks it). A table of inputs, an example frame with the hidden state drawn for the viewer. --></p>
+<p class="lede">The agent gets <b>no game state at all</b>: no ball position, no paddle position, no brick map. Its only
+input is the last four screens, shrunk to 84×84 pixels of gray. Everything it knows about where the ball is
+and where it is going, it has to work out from those pixels.</p>
+<div class="box">
+<h3>From the screen to the input, step by step</h3>
+<table class="t">
+<tr><th>Step</th><th>What happens</th><th>Why</th></tr>
+<tr><td>Frame skip 4</td><td>The agent picks an action every 4th frame; the action is repeated for the 4 frames and the rewards summed.</td><td>60 decisions a second are not needed; 15 are enough, and training sees 4× more game per step.</td></tr>
+<tr><td>Max-pool</td><td>Each pixel is the brighter of the last two raw frames.</td><td>The Atari draws some objects only every other frame (flicker); this makes the ball always visible.</td></tr>
+<tr><td>Grayscale + resize</td><td>210×160 colour → 84×84 gray (area averaging).</td><td>7× fewer numbers. Colour carries little here (it marks the row's points, which the reward already tells).</td></tr>
+<tr><td>Stack 4</td><td>The input is the last 4 processed frames: a 4×84×84 array of bytes.</td><td>One frame shows <i>where</i> the ball is; several show <i>which way and how fast</i> it moves.</td></tr>
+<tr><td>No-op start</td><td>Each game begins with 0–30 random "do nothing" steps.</td><td>So no two games are the same and the agent can't memorise one sequence of moves.</td></tr>
+</table>
+<p class="muted small">Training and test use envpool's Breakout-v5, the same game with the same preprocessing as the classic
+BreakoutNoFrameskip-v4. The colour replays on this site are recorded through gymnasium's ALE with the same wrappers, because
+envpool doesn't return colour frames.</p>
+</div>
+<h2>A real moment, as the agent sees it</h2>
+<p class="muted small" id="snote"></p>
+<div id="moments"></div>
+<div class="box">
+<h3>How to read the saliency maps</h3>
+<p>Saliency asks <i>"which pixels does the network actually use?"</i> We take the real input, blur a small round patch
+(σ = 5 pixels) and run the network again: if the outputs change a lot, that patch mattered. Doing this for a grid of 21×21
+patch positions gives a heat map (the method of Greydanus et al., 2017, "Visualizing and Understanding Atari Agents").</p>
+<ul><li><b style="color:#ff5028">Actor (orange)</b>: how much the <i>action</i> probabilities change. This is where it looks to decide where to move.</li>
+<li><b style="color:#3ca0ff">Critic (blue)</b>: how much the <i>value</i> estimate changes. This is what it looks at to judge how well the game is going.</li></ul>
+<p>Maps are normalised per image: bright means "most important in this picture", not an absolute amount.</p>
+</div>
 </main>
-<script src="site.js"></script>
-<script src="common.js"></script>
-<script src="project.js"></script>
+<script src="site.js?v=c9181741"></script>
+<script src="common.js?v=448bd7f6"></script>
+<script src="project.js?v=e33f46d2"></script>
+<script>
+(async function () {
+  const m = await fetch('senses/senses.json?t=' + Date.now()).then((r) => r.ok ? r.json() : null).catch(() => null);
+  if (!m) { $('moments').innerHTML = '<p class="muted">Not rendered yet: appears after the first checkpoint.</p>'; return; }
+  $('snote').textContent = `Model: ${m.ckpt}. One game (seed ${m.seed}, ${m.steps} agent steps, ${m.score} points); ${m.moments.length} moments spread over it, chosen where the ball moves.`;
+  const A = ['NOOP', 'FIRE', 'RIGHT', 'LEFT'];
+  $('moments').innerHTML = m.moments.map((x) => `<div class="box"><h3>Step ${x.step}: it chose ${x.action} <span class="muted small">· value estimate ${x.value} · probabilities ${x.probs.map((p, i) => A[i] + ' ' + (100 * p).toFixed(0) + '%').join(', ')}</span></h3>
+    <div class="frames">${[0, 1, 2, 3].map((i) => `<figure><img src="senses/m${x.k}_f${i}.png?${m.ckpt}" alt="input frame ${i + 1}">t${i - 3 || ''}${i === 3 ? ' (now)' : ''}</figure>`).join('')}</div>
+    <div class="frames" style="margin-top:10px"><figure><img style="width:168px;height:220px" src="senses/m${x.k}_rgb.png?${m.ckpt}">the real screen</figure>
+    <figure><img src="senses/m${x.k}_actor.png?${m.ckpt}">actor saliency</figure><figure><img src="senses/m${x.k}_critic.png?${m.ckpt}">critic saliency</figure></div></div>`).join('');
+})();
+</script>
 
 </body>
 </html>

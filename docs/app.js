@@ -34,7 +34,7 @@ async function main() {
   if (main) {
     const l = main.last || {};
     const card = (c) => { let v = l[c.key]; if (c.fmt === 'pct') v = pct(+v); if (c.fmt === 'M') v = v ? (v / 1e6).toFixed(1) + ' M' : '–'; return [c.label, v ?? '–', c.sub || '']; };
-    $('cards').innerHTML = [['Run', main.run, main.alive ? 'training now' : 'stopped'], ['Stage', l.stage || '–', `${main.passed.length} stage(s) passed`],
+    $('cards').innerHTML = [['Run', main.run, main.alive ? 'training now' : 'stopped'], ...(main.n_stages ? [['Stage', l.stage || '–', `${main.passed.length} stage(s) passed`]] : []),
       ...(C.cards || []).map(card), ['Best check', main.best_goal ? GV(main.best_goal[metric]) : '–', 'best of many: flatters']]
       .map(([k, v, s]) => `<div class="card"><div class="k">${esc(k)}</div><div class="v">${esc(v)}</div><div class="s">${esc(s)}</div></div>`).join('');
     chart((stats || {})[main.run] || [], main.run, C.chart || {}, NUM ? target / 100 : target);

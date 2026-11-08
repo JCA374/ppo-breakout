@@ -60,7 +60,10 @@ def build(ckpt, out_dir, seed=4242, moments=4):
     ep = record_episode(agent, seed, max_steps=3000)
     n = len(ep["action"])
     # pick moments spread over the game where something is happening (the ball is in play: value changes)
-    picks = [int(n * f) for f in np.linspace(0.12, 0.8, moments)]
+    # the ball moves between the last two frames below the bricks (rows 45-76 of 84; the paddle is excluded)
+    moving = [t for t in range(n) if np.abs(ep["obs"][t][3, 45:76].astype(int) - ep["obs"][t][2, 45:76]).sum() > 150]
+    pool = moving if len(moving) >= moments else list(range(n))
+    picks = [pool[int(len(pool) * f)] for f in np.linspace(0.1, 0.85, moments)]
     items = []
     for k, t in enumerate(picks):
         st = ep["obs"][t]

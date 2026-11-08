@@ -1,0 +1,40 @@
+title: What PPO does
+kind: voiceover
+author: ''
+narrator: Kokoro TTS (af_heart)
+narration:
+  narrator: af_heart
+  speed: 1.05
+  paragraph_pause: 0.6
+chapters:
+  ch01: The task
+  ch02: One network, two heads
+  ch03: Collecting a rollout
+  ch04: Was it better than expected?
+  ch05: The careful update
+  ch06: Round after round
+sources:
+  ch01:
+    path: /home/jonas/code/games/ppo/video/ppo1/script.md
+    sha1: c81501bf00424b50f7af69570fedc8d2eec1d7a2
+    section: The task
+  ch02:
+    path: /home/jonas/code/games/ppo/video/ppo1/script.md
+    sha1: c81501bf00424b50f7af69570fedc8d2eec1d7a2
+    section: One network, two heads
+  ch03:
+    path: /home/jonas/code/games/ppo/video/ppo1/script.md
+    sha1: c81501bf00424b50f7af69570fedc8d2eec1d7a2
+    section: Collecting a rollout
+  ch04:
+    path: /home/jonas/code/games/ppo/video/ppo1/script.md
+    sha1: c81501bf00424b50f7af69570fedc8d2eec1d7a2
+    section: Was it better than expected?
+  ch05:
+    path: /home/jonas/code/games/ppo/video/ppo1/script.md
+    sha1: c81501bf00424b50f7af69570fedc8d2eec1d7a2
+    section: The careful update
+  ch06:
+    path: /home/jonas/code/games/ppo/video/ppo1/script.md
+    sha1: c81501bf00424b50f7af69570fedc8d2eec1d7a2
+    section: Round after round

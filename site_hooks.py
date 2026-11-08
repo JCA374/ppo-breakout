@@ -107,9 +107,55 @@ def render_play(policy_path, game, out_mp4):
     return {"ok": not cut, "result": result, "detail": f"{ep['steps']} agent steps, {ep['score']:.0f} points"}
 
 
+def milestones(data_dir):
+    """First frame count at which the mean of the last >=50 training games reached each milestone."""
+    import csv
+    m = json.load(open(ROOT / "experiments" / "milestones.json"))
+    path = ROOT / "runs" / RUN / "stats.csv"
+    games = []   # (frames, sum, count) per iteration
+    if path.exists():
+        for r in csv.DictReader(open(path)):
+            if r["episodes"] and int(r["episodes"]) > 0 and r["ep_return_mean"]:
+                games.append((int(r["frames"]), float(r["ep_return_mean"]) * int(r["episodes"]), int(r["episodes"])))
+    win = []
+    for fr, s_, c in games:
+        win.append((s_, c))
+        while sum(x[1] for x in win[1:]) >= 50:
+            win.pop(0)
+        n = sum(x[1] for x in win)
+        if n >= 50:
+            mean = sum(x[0] for x in win) / n
+            for ms in m["milestones"]:
+                if "reached" not in ms and mean >= ms["score"]:
+                    ms["reached"] = fr
+    json.dump(m, open(os.path.join(data_dir, "milestones.json"), "w"))
+
+
+def senses():
+    """Saliency page for the newest checkpoint of the main run (re-rendered when a new checkpoint appears)."""
+    cks = checkpoints()
+    if not cks:
+        return
+    out = ROOT / "docs" / "senses"
+    meta = out / "senses.json"
+    want = cks[-1].split("checkpoints/")[-1]
+    if meta.exists() and json.load(open(meta)).get("ckpt") == want:
+        return
+    import torch
+    torch.set_num_threads(1)
+    from senses import build
+    build(cks[-1], out)
+
+
 def extra(data_dir):
     from export_mlflow import export
-    try:
-        export(os.path.join(data_dir, "mlflow.json"))
-    except Exception as ex:
-        print("mlflow export failed", ex)
+    for name, fn in [("mlflow export", lambda: export(os.path.join(data_dir, "mlflow.json"))),
+                     ("milestones", lambda: milestones(data_dir)), ("senses", senses)]:
+        try:
+            fn()
+        except Exception as ex:   # never stop the publisher
+            print(name, "failed", ex)
+    for f in ["env_bench.json", "thread_bench.json"]:
+        src = ROOT / "bench" / f
+        if src.exists():
+            open(os.path.join(data_dir, f), "w").write(src.read_text())

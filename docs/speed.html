@@ -4,16 +4,54 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Speed</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=50944cfd">
 </head>
 <body>
 <main>
 <h1>Speed</h1>
-<p class="lede"><!-- WRITE: the machine (nproc, RAM, GPU), profiles, and before/after timings of each optimisation, measured end to end. --></p>
+<p class="lede">Everything runs on one laptop: <b>a laptop Intel i5-8250U (4 physical cores, 8 threads), 7 GB of RAM, no GPU</b>. The plan said: measure first, and only
+port code to a faster language if 10 M frames would not fit in about 12 hours. They fit in under 3 hours, so no port was needed.
+Every number below was measured on this machine.</p>
+<div class="box">
+<h3>1. The simulator: envpool vs gymnasium</h3>
+<p>Random actions, Breakout with the standard wrappers, 8 seconds per setting. envpool runs the emulators in C++ threads and
+does the preprocessing there; gymnasium's AsyncVectorEnv uses one Python process per game.</p>
+<div class="tablewrap"><table class="t" id="envb"></table></div>
+<p class="muted small">1 agent step = 4 game frames. At 4,000 steps per second the simulator alone could play 10 M frames in about 10 minutes,
+so the simulator is not what limits training.</p>
+<h3>2. The whole PPO loop: where the time goes</h3>
+<p>One PPO iteration = <b>rollout</b> (8 games × 128 steps, the network picks every action) + <b>update</b> (4 epochs × 4 minibatches of 256
+samples, forward and backward through the CNN). Measured with PyTorch on CPU at different thread counts:</p>
+<div class="tablewrap"><table class="t" id="thb"></table></div>
+<p>The update takes about three quarters of the time: the backward pass through the convolutions is the real cost. More PyTorch threads
+don't help beyond 4: the CPU has only 4 physical cores (8 with hyperthreading), envpool's 8 threads already want the cores during the rollout and the small batches don't split well.
+<b>Chosen: 4 PyTorch threads</b>, which leaves cores free for this site and the videos.</p>
+<h3>3. Live: speed of the main run</h3>
+<div class="chartbox"><div class="h"><canvas id="spsc"></canvas></div></div>
+<p class="muted small" id="spsnote"></p>
+</div>
 </main>
-<script src="site.js"></script>
-<script src="common.js"></script>
-<script src="project.js"></script>
+<script src="site.js?v=c9181741"></script>
+<script src="common.js?v=448bd7f6"></script>
+<script src="project.js?v=e33f46d2"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+(async function () {
+  const [e, t, m] = await Promise.all([get('env_bench.json'), get('thread_bench.json'), get('mlflow.json')]);
+  if (e) $('envb').innerHTML = '<tr><th>Simulator</th><th>Parallel games</th><th>Agent steps / s</th><th>Frames / s</th></tr>' + Object.entries(e).map(([k, v]) => {
+    const [lib, n] = k.split('_n'); return `<tr><td>${lib.replace('gym_async', 'gymnasium AsyncVectorEnv')}</td><td class="num">${n}</td><td class="num">${Math.round(v).toLocaleString()}</td><td class="num">${Math.round(4 * v).toLocaleString()}</td></tr>`; }).join('');
+  if (t) $('thb').innerHTML = '<tr><th>PyTorch threads</th><th>Rollout (s)</th><th>Update (s)</th><th>Agent steps / s</th><th>10 M frames would take</th></tr>' + ['4', '6', '8'].map((k) =>
+    `<tr><td class="num">${k}</td><td class="num">${t.rollout_s[k]}</td><td class="num">${t.update_s[k]}</td><td class="num">${t.agent_steps_per_sec['torch_threads_' + k]}</td><td class="num">${(2.5e6 / t.agent_steps_per_sec['torch_threads_' + k] / 3600).toFixed(1)} h</td></tr>`).join('');
+  const exp = m && m.experiments.find((x) => x.name === 'ppo-breakout');
+  const r = exp && exp.runs.find((x) => x.curves && x.curves.sps);
+  if (!r || !window.Chart) return;
+  const ds = [['sps', 'agent steps / s', '--accent']].map(([k, l, c]) => ({ label: l, data: r.curves[k].map(([s, v]) => ({ x: s * 4 / 1e6, y: v })), borderColor: cssv(c), pointRadius: 0, borderWidth: 1.5 }));
+  const ro = r.curves.rollout_seconds, up = r.curves.update_seconds;
+  if (ro && up) { const a = ro.slice(-50), b = up.slice(-50); const ra = a.reduce((s, x) => s + x[1], 0) / a.length, ub = b.reduce((s, x) => s + x[1], 0) / b.length;
+    $('spsnote').textContent = `Recent iterations: rollout ${ra.toFixed(2)} s + update ${ub.toFixed(2)} s. The steps/s line is the average since the run (re)started.`; }
+  new Chart($('spsc'), { type: 'line', data: { datasets: ds }, options: { animation: false, maintainAspectRatio: false, scales: { x: { type: 'linear', title: { display: true, text: 'M frames', color: cssv('--muted') }, ticks: { color: cssv('--muted') } }, y: { min: 0, ticks: { color: cssv('--muted') } } }, plugins: { legend: { labels: { color: cssv('--ink') } } } } });
+})();
+</script>
 
 </body>
 </html>

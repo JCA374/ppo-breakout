@@ -4,18 +4,41 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Curriculum</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=50944cfd">
 </head>
 <body>
 <main>
 <h1>Curriculum</h1>
-<p class="lede">Every run's stages: the world, the reward, the check that ends the stage, the cap and the expected outcome, written down <i>before</i> the stage starts.</p>
-<!-- WRITE: a box with what earlier projects taught about curricula for this task -->
-<div id="runs"></div>
+<p class="lede">There is no curriculum here: from the first step the agent plays the real game, with the same rules it is
+tested on. Only two things make training easier than the test, and both are standard for Atari:</p>
+<div class="box">
+<h3>What training sees that the test does not</h3>
+<ul>
+<li><b>A lost life ends the training episode</b> ("episodic life"). The value estimate learns that losing the ball is the end of
+the world, which is a clearer signal than "one of five lives is gone". The game itself continues; only the bookkeeping changes.
+The test plays all 5 lives as one game.</li>
+<li><b>Rewards are clipped to +1</b>. A red brick (7 points) and a blue one (1 point) both count as +1 while learning, so one
+learning rate fits all games. The test counts the real score.</li>
+</ul>
+<h3>What changes over the run</h3>
+<ul><li>The learning rate falls linearly from 2.5·10⁻⁴ to 0 over the 10 M frames ("annealing"), so late updates are small.</li>
+<li>The policy's own randomness (entropy) falls as it becomes sure of itself. An entropy bonus (0.01) keeps it from collapsing too early.</li></ul>
+</div>
+<h2>Milestones: expected before the run, measured during it</h2>
+<p class="muted small" id="msnote"></p>
+<div class="tablewrap"><table class="t" id="ms"></table></div>
 </main>
-<script src="site.js"></script>
-<script src="common.js"></script>
-<script src="project.js"></script>
-<script src="curriculum.js"></script>
+<script src="site.js?v=c9181741"></script>
+<script src="common.js?v=448bd7f6"></script>
+<script src="project.js?v=e33f46d2"></script>
+<script>
+(async function () {
+  const m = await get('milestones.json'); if (!m) return;
+  $('msnote').textContent = `Written ${m.written}. ${m.note} "Reached" is the first time the mean of 50 consecutive training games got there (all 5 lives, real score).`;
+  $('ms').innerHTML = '<tr><th>Score</th><th>What it takes</th><th>Expected at</th><th>Reached at</th></tr>' + m.milestones.map((x) =>
+    `<tr><td class="num"><b>${x.score}</b></td><td>${esc(x.what)}</td><td class="num">${x.expect_frames ? (x.expect_frames / 1e6).toFixed(1) + ' M frames' : '–'}</td>
+     <td class="num">${x.reached ? '✅ ' + (x.reached / 1e6).toFixed(2) + ' M frames' : '<span class="muted">not yet</span>'}</td></tr>`).join('');
+})();
+</script>
 </body>
 </html>

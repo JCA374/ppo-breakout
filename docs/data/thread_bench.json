@@ -1,0 +1,1 @@
+{"note": "PPO iteration timing, 8 envs x 128 steps, 4 epochs x 4 minibatches, Nature CNN, CPU", "agent_steps_per_sec": {"torch_threads_4": 288, "torch_threads_6": 285, "torch_threads_8": 225}, "rollout_s": {"4": 0.88, "6": 1.01, "8": 1.51}, "update_s": {"4": 2.69, "6": 2.79, "8": 3.09}}
