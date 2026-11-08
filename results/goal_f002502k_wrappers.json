@@ -1,0 +1,56 @@
+{
+ "t": "2026-11-09 00:28:54",
+ "policy": "checkpoints/main/model_002502k.pt",
+ "frames": 2502656,
+ "n": 10,
+ "score": 6.2,
+ "std": 2.043961295567452,
+ "ci": [
+  4.737939755003236,
+  7.6620602449967645
+ ],
+ "min": 4.0,
+ "max": 10.0,
+ "scores": [
+  4.0,
+  9.0,
+  4.0,
+  5.0,
+  7.0,
+  5.0,
+  5.0,
+  6.0,
+  10.0,
+  7.0
+ ],
+ "lengths": [
+  248,
+  469,
+  268,
+  305,
+  377,
+  309,
+  312,
+  368,
+  502,
+  379
+ ],
+ "truncated": [
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false
+ ],
+ "seed": 12345,
+ "greedy": false,
+ "protocol": "wrappers",
+ "label": "after 2.5 M frames \u00b7 training wrappers",
+ "note": "seeds 12345-12354, protocol wrappers",
+ "seconds": 8.4
+}

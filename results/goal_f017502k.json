@@ -1,0 +1,56 @@
+{
+ "t": "2026-11-09 00:31:54",
+ "policy": "checkpoints/main/model_017502k.pt",
+ "frames": 17502208,
+ "n": 10,
+ "score": 181.6,
+ "std": 117.95969179719354,
+ "ci": [
+  97.22258235380748,
+  265.9774176461925
+ ],
+ "min": 23.0,
+ "max": 388.0,
+ "scores": [
+  23.0,
+  160.0,
+  286.0,
+  57.0,
+  106.0,
+  388.0,
+  207.0,
+  307.0,
+  192.0,
+  90.0
+ ],
+ "lengths": [
+  724,
+  1763,
+  1186,
+  1057,
+  1420,
+  1798,
+  1686,
+  2149,
+  1917,
+  1351
+ ],
+ "truncated": [
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false,
+  false
+ ],
+ "seed": 12345,
+ "greedy": false,
+ "protocol": "full",
+ "label": "after 17.5 M frames \u00b7 full game",
+ "note": "seeds 12345-12354, protocol full",
+ "seconds": 31.4
+}
