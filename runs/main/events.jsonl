@@ -6,3 +6,5 @@
 {"t": "2026-11-08 20:24:07", "kind": "override", "what": "total frames 10 M -> 40 M", "reason": "total_frames changed from 10000000 to 40000000 at 1503232 frames; the linear learning-rate schedule now runs to the new total"}
 {"t": "2026-11-08 20:33:14", "kind": "checkpoint", "frames": 2002944, "path": "checkpoints/main/model_002002k.pt", "score": 4.0, "champion": "checkpoints/main/model_002002k.pt"}
 {"t": "2026-11-08 20:39:41", "kind": "checkpoint", "frames": 2502656, "path": "checkpoints/main/model_002502k.pt", "score": 9.0}
+{"t": "2026-11-08 20:47:07", "kind": "checkpoint", "frames": 3002368, "path": "checkpoints/main/model_003002k.pt", "score": 7.5}
+{"t": "2026-11-08 20:53:34", "kind": "checkpoint", "frames": 3502080, "path": "checkpoints/main/model_003502k.pt", "score": 15.0}
