@@ -156,13 +156,15 @@ def goal_checks():
         f = _frames_of(c)
         if f % 2_500_000 > 300_000 and 2_500_000 - f % 2_500_000 > 300_000:
             continue
-        out = ROOT / "results" / f"goal_f{f // 1000:06d}k.json"
-        if out.exists():
-            continue
-        subprocess.run(["nice", "-n", "10", sys.executable, str(ROOT / "ppo" / "evaluate.py"), c, "--episodes", "10",
-                        "--seed", "12345", "--threads", "2", "--out", str(out), "--label", f"after {_fm(f)}",
-                        "--note", "checkpoint check, seeds 12345-12354"], check=True, capture_output=True)
-    res = [json.load(open(p)) for p in glob.glob(str(ROOT / "results" / "goal_f*.json"))]
+        for proto, name, lab in [("full", f"goal_f{f // 1000:06d}k.json", f"after {_fm(f)} · full game"),
+                                 ("wrappers", f"goal_f{f // 1000:06d}k_wrappers.json", f"after {_fm(f)} · training wrappers")]:
+            out = ROOT / "results" / name
+            if out.exists():
+                continue
+            subprocess.run(["nice", "-n", "10", sys.executable, str(ROOT / "ppo" / "evaluate.py"), c, "--episodes", "10",
+                            "--seed", "12345", "--threads", "2", "--out", str(out), "--label", lab, "--protocol", proto,
+                            "--note", f"seeds 12345-12354, protocol {proto}"], check=True, capture_output=True)
+    res = [json.load(open(p)) for p in glob.glob(str(ROOT / "results" / "goal_f*k.json"))]   # best by the strict protocol
     if res:
         b = max(res, key=lambda r: r["score"])
         json.dump({"policy": b["policy"], "score": b["score"], "frames": b["frames"]}, open(ROOT / "results" / "best.json", "w"))

@@ -22,7 +22,7 @@ agent plays on the <a href="play.html">Play</a> tab.</p>
 <section class="cards" id="cards"></section>
 <section>
   <h2>Goal table</h2>
-  <p class="muted">Every agent is measured on full games it never trained on. The 95% interval is a t-interval for the mean of the 10 games.</p>
+  <p class="muted">Every checkpoint plays 10 full games (5 lives, real score) on seeds it never trained on, under two protocols: <b>full game</b> (nothing happens at a lost life; strict) and <b>training wrappers</b> (a lost life is an episode boundary with a soft reset and automatic FIRE, as in training). The 95% interval is a t-interval for the mean of the 10 games.</p>
   <div class="tablewrap"><table class="t" id="goaltable"></table></div>
 </section>
 <section>

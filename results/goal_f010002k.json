@@ -49,7 +49,8 @@
  ],
  "seed": 12345,
  "greedy": false,
- "label": "after 10.0 M frames",
+ "label": "after 10.0 M frames \u00b7 full game",
  "note": "checkpoint check, seeds 12345-12354",
- "seconds": 20.8
+ "seconds": 20.8,
+ "protocol": "full"
 }
