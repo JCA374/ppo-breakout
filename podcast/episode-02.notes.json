@@ -1,0 +1,1 @@
+["Training score: ~2 until 2M frames, then 4 (2.5M), 9 (3.3M), 14 (4M), ~20 (6M)", "First goal check at 2.5M frames: mean 5.4 over 10 unseen full games (min 1, max 9)", "Saliency maps on 'How it sees': the actor attends to the ball and paddle", "Run at 15% of 40M frames; about 8 hours left"]
