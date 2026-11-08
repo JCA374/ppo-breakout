@@ -1,0 +1,1 @@
+This is a real game from this run, played by the agent after ten million frames. A brick breaks, and the agent gets a point. But the move that made it possible came earlier: the paddle had to meet the ball, many steps before. [PPO](//pˌiːpˌiːˈQ//) has to share out the credit fairly. That share is called the advantage.

@@ -1,0 +1,14 @@
+title: 'Episode 03: A quarter of the way'
+kind: prose
+author: ''
+narrator: Kokoro TTS (af_heart)
+narration:
+  narrator: af_heart
+  speed: 0.95
+  paragraph_pause: 0.6
+chapters:
+  ch01: 'Episode 03: A quarter of the way'
+sources:
+  ch01:
+    path: /home/jonas/code/games/ppo/podcast/episode-03.md
+    sha1: 8e48bfa1d061498b08218efdd1957c718b603e90

@@ -1,0 +1,11 @@
+[21:27:22] prep + narrate (Kokoro)
+[21:30:43] listen-check (Whisper)
+[21:32:05] pipeline stages PASS: 5/5
+  listen flag:     1:11  missing  expected: 'point'                          heard: '–'
+[21:32:05] episode-02.mp3: 144 s
+2 episode(s)
+[21:32:08] waiting for GitHub Pages (46f76ae030802215accaa53891cded8077e1cde3)
+[21:33:06]   200 https://jca374.github.io/ppo-breakout/podcast/index.html
+[21:33:07]   200 https://jca374.github.io/ppo-breakout/podcast/episode-02.mp3
+[21:33:07]   200 https://jca374.github.io/ppo-breakout/data/podcast.json
+DEPLOYED https://jca374.github.io/ppo-breakout/podcast/index.html (episode 02: The ball is found, 144 s)

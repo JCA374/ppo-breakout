@@ -1,0 +1,40 @@
+title: Advantages and GAE
+kind: voiceover
+author: ''
+narrator: Kokoro TTS (af_heart)
+narration:
+  narrator: af_heart
+  speed: 1.05
+  paragraph_pause: 0.6
+chapters:
+  ch01: Which move earned the points?
+  ch02: The critic's yardstick
+  ch03: One step of surprise
+  ch04: Looking all the way ahead
+  ch05: Generalized advantage estimation
+  ch06: Three grades for the same game
+sources:
+  ch01:
+    path: /home/jonas/code/games/ppo/video/ppo2/script.md
+    sha1: c0371a79b6d4cb3bef866264fe12cf2173bf2246
+    section: Which move earned the points?
+  ch02:
+    path: /home/jonas/code/games/ppo/video/ppo2/script.md
+    sha1: c0371a79b6d4cb3bef866264fe12cf2173bf2246
+    section: The critic's yardstick
+  ch03:
+    path: /home/jonas/code/games/ppo/video/ppo2/script.md
+    sha1: c0371a79b6d4cb3bef866264fe12cf2173bf2246
+    section: One step of surprise
+  ch04:
+    path: /home/jonas/code/games/ppo/video/ppo2/script.md
+    sha1: c0371a79b6d4cb3bef866264fe12cf2173bf2246
+    section: Looking all the way ahead
+  ch05:
+    path: /home/jonas/code/games/ppo/video/ppo2/script.md
+    sha1: c0371a79b6d4cb3bef866264fe12cf2173bf2246
+    section: Generalized advantage estimation
+  ch06:
+    path: /home/jonas/code/games/ppo/video/ppo2/script.md
+    sha1: c0371a79b6d4cb3bef866264fe12cf2173bf2246
+    section: Three grades for the same game

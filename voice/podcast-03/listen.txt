@@ -1,0 +1,2 @@
+== ch01  2:08 audio, checked in 61s: 1 to listen to  (1 dismissed by the second model)
+    0:25  missing  expected: 'point'                          heard: '–'

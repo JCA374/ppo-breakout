@@ -1,0 +1,38 @@
+[
+ {
+  "scene": "ch01",
+  "title": "Which move earned the points?",
+  "file": "ch01.mp3",
+  "seconds": 18.939
+ },
+ {
+  "scene": "ch02",
+  "title": "The critic's yardstick",
+  "file": "ch02.mp3",
+  "seconds": 16.562
+ },
+ {
+  "scene": "ch03",
+  "title": "One step of surprise",
+  "file": "ch03.mp3",
+  "seconds": 18.547
+ },
+ {
+  "scene": "ch04",
+  "title": "Looking all the way ahead",
+  "file": "ch04.mp3",
+  "seconds": 13.558
+ },
+ {
+  "scene": "ch05",
+  "title": "Generalized advantage estimation",
+  "file": "ch05.mp3",
+  "seconds": 16.953
+ },
+ {
+  "scene": "ch06",
+  "title": "Three grades for the same game",
+  "file": "ch06.mp3",
+  "seconds": 12.225
+ }
+]

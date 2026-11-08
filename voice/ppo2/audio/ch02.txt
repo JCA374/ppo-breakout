@@ -1,0 +1,1 @@
+The critic gives every moment a value: its guess of the reward still to come. Watch it on this game. It changes from moment to moment, between about half a point and two and a half. Just before the life is lost, it falls by more than half as the ball slips past the paddle.
