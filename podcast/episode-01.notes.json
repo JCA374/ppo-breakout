@@ -1,0 +1,1 @@
+["envpool: ~4,000 agent steps/s vs ~1,800 for gymnasium's AsyncVectorEnv; the full PPO loop ~290 steps/s (4 PyTorch threads)", "10-minute smoke test with a mid-way resume: passed, and bit-for-bit reproducible", "Correction: CleanRL's 10M = agent steps = 40M frames; run extended from 10M to 40M frames at 1.5M", "Video 1 'What PPO does' is on The model tab"]
