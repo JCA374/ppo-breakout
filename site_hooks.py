@@ -148,10 +148,30 @@ def senses():
     build(cks[-1], out)
 
 
+def goal_checks():
+    """Evaluate every 2.5 M-frame checkpoint once: 10 full games, seeds 12345.. (never used in training).
+    results/best.json = the best of these; the final claim is re-checked on fresh seeds (winner's curse)."""
+    import subprocess
+    for c in checkpoints():
+        f = _frames_of(c)
+        if f % 2_500_000 > 300_000 and 2_500_000 - f % 2_500_000 > 300_000:
+            continue
+        out = ROOT / "results" / f"goal_f{f // 1000:06d}k.json"
+        if out.exists():
+            continue
+        subprocess.run(["nice", "-n", "10", sys.executable, str(ROOT / "ppo" / "evaluate.py"), c, "--episodes", "10",
+                        "--seed", "12345", "--threads", "2", "--out", str(out), "--label", f"after {_fm(f)}",
+                        "--note", "checkpoint check, seeds 12345-12354"], check=True, capture_output=True)
+    res = [json.load(open(p)) for p in glob.glob(str(ROOT / "results" / "goal_f*.json"))]
+    if res:
+        b = max(res, key=lambda r: r["score"])
+        json.dump({"policy": b["policy"], "score": b["score"], "frames": b["frames"]}, open(ROOT / "results" / "best.json", "w"))
+
+
 def extra(data_dir):
     from export_mlflow import export
     for name, fn in [("mlflow export", lambda: export(os.path.join(data_dir, "mlflow.json"))),
-                     ("milestones", lambda: milestones(data_dir)), ("senses", senses)]:
+                     ("goal checks", goal_checks), ("milestones", lambda: milestones(data_dir)), ("senses", senses)]:
         try:
             fn()
         except Exception as ex:   # never stop the publisher
