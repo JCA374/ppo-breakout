@@ -1,56 +1,56 @@
 {
- "ckpt": "main/model_028000k.pt",
+ "ckpt": "main/model_029003k.pt",
  "seed": 4242,
- "score": 424.0,
- "steps": 2462,
+ "score": 379.0,
+ "steps": 2256,
  "moments": [
   {
    "k": 0,
-   "step": 214,
-   "action": "LEFT",
+   "step": 209,
+   "action": "FIRE",
    "probs": [
-    0.004,
-    0.008,
-    0.0,
-    0.989
+    0.155,
+    0.637,
+    0.055,
+    0.154
    ],
-   "value": 2.656
+   "value": 3.067
   },
   {
    "k": 1,
-   "step": 776,
-   "action": "FIRE",
+   "step": 746,
+   "action": "LEFT",
    "probs": [
-    0.01,
+    0.086,
+    0.493,
     0.351,
-    0.0,
-    0.638
+    0.07
    ],
-   "value": 3.565
+   "value": 4.178
   },
   {
    "k": 2,
-   "step": 1338,
-   "action": "RIGHT",
+   "step": 1269,
+   "action": "LEFT",
    "probs": [
-    0.183,
-    0.004,
-    0.813,
-    0.0
+    0.208,
+    0.107,
+    0.024,
+    0.661
    ],
-   "value": 6.914
+   "value": 4.792
   },
   {
    "k": 3,
-   "step": 2073,
-   "action": "NOOP",
+   "step": 1831,
+   "action": "FIRE",
    "probs": [
-    0.426,
-    0.154,
-    0.235,
-    0.185
+    0.302,
+    0.634,
+    0.063,
+    0.001
    ],
-   "value": 1.363
+   "value": 5.068
   }
  ]
 }
