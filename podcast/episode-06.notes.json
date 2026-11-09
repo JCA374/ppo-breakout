@@ -1,0 +1,1 @@
+["30M frames: 10-game check (fixed seeds 12345-12354, full game) = 332.7 (min 117, max 399)", "64 fresh games, same model: 279.7 ± 14.7: the 10-game check was a lucky draw", "True level rose from ~170 (20M) to ~280 (30M); games average ~1,780 steps", "No tunnelling seen in 3 replayed games at 20M frames"]
