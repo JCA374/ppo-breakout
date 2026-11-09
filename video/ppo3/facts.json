@@ -1,0 +1,28 @@
+{
+ "frames_m": 20.4,
+ "kl_median": 0.004754,
+ "kl_p99": 0.010733039999999998,
+ "kl_max": 0.065308,
+ "clipfrac_mean": 0.1043974523952696,
+ "clipfrac_p95": 0.15200399999999986,
+ "kl_by_phase": [
+  0.001841,
+  0.005103,
+  0.004406
+ ],
+ "clip_by_phase": [
+  0.06372,
+  0.11719,
+  0.08447
+ ],
+ "lines": [
+  "median approx KL 0.0048 per update \u00b7 99% of updates below 0.0107 \u00b7 max 0.0653",
+  "mean clip fraction 10% \u00b7 95% of updates below 15%"
+ ],
+ "summary": [
+  "20 M frames, 4,989 update rounds, each a small step",
+  "typical change per update: KL \u2248 0.0048",
+  "about 10% of samples hit the clip",
+  "no collapse: the score climbed steadily (see the Log tab)"
+ ]
+}

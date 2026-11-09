@@ -340,7 +340,85 @@ def l4_s5(t, T):
     return im
 
 
+# ------------------------------------------------------------------ lesson 3: reading PPO's health signals
+if LESSON == "lesson3":
+    ROWS3 = list(csv.DictReader(open(ROOT / "runs" / "main" / "stats.csv")))
+    F3 = np.array([int(r["frames"]) for r in ROWS3]) / 1e6
+
+
+def curve(key, smooth=25):
+    a = np.array([float(r[key]) if r[key] != "" else np.nan for r in ROWS3])
+    if np.isnan(a).any():
+        idx = ~np.isnan(a); a = np.interp(np.arange(len(a)), np.where(idx)[0], a[idx])
+    pad = np.pad(a, (smooth // 2, smooth - 1 - smooth // 2), mode="edge")
+    return np.convolve(pad, np.ones(smooth) / smooth, mode="valid")
+
+
+def chart(d, t, T, key, label, col, lo=None, hi=None, refs=(), x0=110, y0=150, w=1060, h=380):
+    a = curve(key); n = max(2, int(len(a) * ease(t / (T * 0.7))))
+    lo = lo if lo is not None else float(np.percentile(a, 0.5)) * 0.9
+    hi = hi if hi is not None else float(np.percentile(a, 99.5)) * 1.1
+    X = lambda f: x0 + f / max(F3[-1], 1) * w; Y = lambda v: y0 + h - (min(max(v, lo), hi) - lo) / (hi - lo) * h
+    d.rectangle([x0, y0, x0 + w, y0 + h], outline=(50, 54, 64))
+    for v in np.linspace(lo, hi, 5):
+        d.line([x0, Y(v), x0 + w, Y(v)], fill=(34, 38, 46)); text(d, (x0 - 10, Y(v)), f"{v:.3g}", 14, MUTED, anchor="rm")
+    for f in range(0, int(F3[-1]) + 1, 5):
+        text(d, (X(f), y0 + h + 16), f"{f}M", 14, MUTED, anchor="mm")
+    for v, lab, c in refs:
+        d.line([x0, Y(v), x0 + w, Y(v)], fill=c, width=2); text(d, (x0 + w - 6, Y(v) - 20), lab, 15, c, anchor="rm")
+    d.line([(X(F3[k]), Y(a[k])) for k in range(n)], fill=col, width=3)
+    text(d, (x0, y0 - 28), label + " (smoothed over 25 rounds; x = million frames)", 17, MUTED)
+
+
+def l3_s1(t, T):
+    im, d = canvas(); header(d, "Why look inside", "the score is slow and noisy: training games, mean per round")
+    chart(d, t, T, "ep_return_mean", "score of training games", INK, lo=0)
+    return im
+
+
+def l3_s2(t, T):
+    im, d = canvas(); header(d, "Entropy", "how random the policy still is; ln 4 ≈ 1.39 = pure chance over 4 buttons")
+    chart(d, t, T, "entropy", "policy entropy (nats)", GOOD, lo=0, hi=1.45, refs=[(np.log(4), "pure chance", MUTED), (0.1, "collapsed", BAD)])
+    return im
+
+
+def l3_s3(t, T):
+    im, d = canvas(); header(d, "KL divergence", "how much the policy changed in one round of updates")
+    chart(d, t, T, "approx_kl", "approx KL (old ‖ new)", ACC, lo=0)
+    return im
+
+
+def l3_s4(t, T):
+    im, d = canvas(); header(d, "Clip fraction", "share of samples whose ratio left 0.9 – 1.1")
+    chart(d, t, T, "clipfrac", "clip fraction", WARN, lo=0, hi=0.5, refs=[(0.5, "half: always fighting the clip", BAD)])
+    return im
+
+
+def l3_s5(t, T):
+    im, d = canvas(); header(d, "The critic", "explained variance: 1 = predicts the returns perfectly, 0 = useless")
+    chart(d, t, T, "explained_variance", "explained variance", ACC, lo=0, hi=1.05, refs=[(1.0, "perfect", MUTED)])
+    return im
+
+
+def l3_s6(t, T):
+    im, d = canvas(); header(d, "A flat start is not a bug", "first 4 M frames: score vs entropy")
+    m = F3 <= 4
+    sc = curve("ep_return_mean")[m]; en = curve("entropy")[m]; fx = F3[m]
+    for j, (a, lab, col, hi) in enumerate([(sc, "score", INK, max(5, sc.max() * 1.1)), (en, "entropy", GOOD, 1.45)]):
+        x0, y0, w, h = 110 + j * 590, 170, 500, 360
+        n = max(2, int(len(a) * ease(t / (T * 0.6))))
+        d.rectangle([x0, y0, x0 + w, y0 + h], outline=(50, 54, 64))
+        d.line([(x0 + fx[k] / 4 * w, y0 + h - a[k] / hi * h) for k in range(n)], fill=col, width=3)
+        text(d, (x0, y0 - 28), lab, 18, MUTED)
+        for f in range(5):
+            text(d, (x0 + f / 4 * w, y0 + h + 16), f"{f}M", 14, MUTED, anchor="mm")
+    if t > T * 0.6:
+        text(d, (110, 600), "flat score for 2 M frames, healthy signals: a slow start, not a bug", 20, INK)
+    return im
+
+
 SCENES = {"lesson1": [l1_s1, l1_s2, l1_s3, l1_s4, l1_s5], "lesson2": [l2_s1, l2_s2, l2_s3, l2_s4, l2_s5],
+          "lesson3": [l3_s1, l3_s2, l3_s3, l3_s4, l3_s5, l3_s6],
           "lesson4": [l4_s1, l4_s2, l4_s3, l4_s4, l4_s5]}
 
 if __name__ == "__main__":
