@@ -47,8 +47,9 @@ def evaluate(agent, episodes=10, seed=12345, greedy=False, threads=None, protoco
             obs, r, term, trunc, info = env.step(a.numpy().astype(np.int32))
             live = ~done
             score[live] += info["reward"][live]; length[live] += 1
-            truncated |= live & trunc
-            done |= info["terminated"].astype(bool) | trunc   # game over (all lives) or the 108k-frame cap
+            cap = length >= 27000                              # 108k frames per GAME (in the wrapper protocol envpool's
+            truncated |= live & (trunc | cap)                  # own limit counts per life, so it is enforced here)
+            done |= info["terminated"].astype(bool) | trunc | cap   # game over (all lives) or the cap
     env.close()
     return score.tolist(), length.tolist(), truncated.tolist()
 

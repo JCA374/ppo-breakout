@@ -109,12 +109,12 @@ def s5(t, T):
     im, d = canvas(); header(d, "This run's numbers", "approx KL and clip fraction of every update (MLflow), smoothed")
     xs = np.array([int(r["frames"]) for r in ROWS]) / 1e6
     kl = np.array([float(r["approx_kl"]) for r in ROWS]); cf = np.array([float(r["clipfrac"]) for r in ROWS])
-    sm = lambda a: np.convolve(a, np.ones(25) / 25, mode="same")
+    sm = lambda a: np.convolve(np.pad(a, (12, 12), mode="edge"), np.ones(25) / 25, mode="valid")
     n = max(2, int(len(xs) * ease(t / (T * 0.6))))
     for j, (arr, lab, col, top) in enumerate([(sm(kl), "approx KL", ACC, max(0.03, float(np.percentile(sm(kl), 99)) * 1.15)),
                                               (sm(cf), "clip fraction", WARN, max(0.3, float(np.percentile(sm(cf), 99)) * 1.15))]):
         x0 = 90 + j * 600
-        X, Y = axes(d, x0, 170, 500, 340, (0, 10), (0, top), "million frames", lab, ticks_x=(0, 2, 4, 6, 8, 10),
+        X, Y = axes(d, x0, 170, 500, 340, (0, 40), (0, top), "million frames", lab, ticks_x=(0, 10, 20, 30, 40),
                     ticks_y=tuple(np.round(np.linspace(0, top, 4), 3)))
         d.line([(X(xs[i]), Y(min(top, arr[i]))) for i in range(n)], fill=col, width=3)
     y = 580

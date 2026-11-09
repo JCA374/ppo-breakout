@@ -1,0 +1,33 @@
+{
+ "seed": 31,
+ "games": [
+  {
+   "ckpt": "main/model_002002k.pt",
+   "frames": 2002000,
+   "score": 2.0,
+   "steps": 221,
+   "truncated": false
+  },
+  {
+   "ckpt": "main/model_010002k.pt",
+   "frames": 10002000,
+   "score": 50.0,
+   "steps": 1043,
+   "truncated": false
+  },
+  {
+   "ckpt": "main/model_020000k.pt",
+   "frames": 20000000,
+   "score": 370.0,
+   "steps": 1896,
+   "truncated": false
+  },
+  {
+   "ckpt": "main/model_039997k.pt",
+   "frames": 39997000,
+   "score": 404.0,
+   "steps": 2251,
+   "truncated": false
+  }
+ ]
+}

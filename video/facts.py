@@ -57,8 +57,9 @@ t = (ROOT / "video" / "ppo3" / "script.tmpl.md").read_text()
 t = t.replace("{KL_SENTENCE}", f"The typical KL divergence between the old and the new policy was about {thousandths(kl_med)} thousandths per round of updates, "
                                f"and ninety nine percent of rounds stayed below {thousandths(kl_p99)} thousandths.")
 t = t.replace("{CLIP_SENTENCE}", f"On average, {pct_words(cf_mean)} of the samples hit the clip.")
-t = t.replace("{TREND_SENTENCE}", "The clip did most of its work early, while the policy was changing fastest, and stayed busy all the way through." if cf_ph[0] > cf_ph[2]
-              else "The clip stayed busy all the way through, not just at the start.")
+pk = [phase(CF, a, b) for a, b in [(2, 10), (38, 41)]]
+t = t.replace("{TREND_SENTENCE}", f"The clip was busiest between two and ten million frames, about {round(100 * pk[0])} percent, while the agent learned fastest. "
+              "At the end, as the learning rate reached zero, it had almost nothing left to do.")
 t = t.replace("{SUMMARY_SENTENCE}", f"That is the whole trick. About {round(len(R), -2):,} rounds of updates, none of them a big leap, added up to an agent that "
                                     "learned Breakout from pixels. PPO is not the cleverest method. It is the one that rarely breaks.")
 (ROOT / "video" / "ppo3" / "script.md").write_text(t)
