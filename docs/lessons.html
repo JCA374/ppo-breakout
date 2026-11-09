@@ -34,6 +34,16 @@ A first comparison on 20 games suggested the evaluation protocol was to blame: 1
 and automatic FIRE) against 139 on plain full games. A bigger test, 64 games each, shrank that to 163 ± 13 against 146 ± 15: within the noise. Breakout scores
 spread by about 110 points per game, so a 10-game mean is only good to about ±35 points (one standard error). A small sample made a protocol effect look large,
 and its retelling had to be corrected. Both protocols are still checked, and the final claim names its protocol.</p></div>
+<div class="lesson"><h3>8. Write the rules down before the result exists</h3><p>At 20 M frames, the fixed 10-game check said 230 while 64 fresh games said 170.
+So before the run ended, the journal fixed how the final result would be judged: which checkpoints are candidates, a 100-game test on fresh seeds to choose
+between them, then the 10-game goal check, reported next to the 100-game mean. At 30 M frames this mattered: the 10-game check was already over 300 (333),
+while the model's true level was about 280.</p></div>
+<div class="lesson"><h3>9. Check your detector before you trust its "no"</h3><p>A quick script looked for the ball above the wall (a tunnel) by its red colour and
+found none, and a podcast episode repeated that. But the Breakout ball takes the colour of the row it flies through, and above the bricks it is gray. A colour-blind
+test found tunnels in the 20 M and 40 M models' games, and most of their points come after the breakthrough. The claim was corrected in the journal and on air.</p></div>
+<div class="lesson"><h3>10. A time limit can mean different things</h3><p>The standard cap is 108,000 frames per game. With the training wrappers, a lost
+life ends an "episode", so envpool's own limit applied per life, and a ball stuck in a bounce loop could keep a test running five times longer.
+The evaluation now enforces the cap per game in both protocols.</p></div>
 <h2 id="videos">Part 2 · Lesson videos: how it all works</h2>
 <p class="muted small">Each is under two minutes, narrated, with the transcript checked by Whisper. The PPO method itself is explained in the
 three videos on <a href="model.html">The model</a> tab; these cover the rest of the project.</p>
