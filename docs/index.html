@@ -14,7 +14,11 @@
 break bricks. It is trained with <b>Proximal Policy Optimization (PPO)</b> on an 8-core laptop CPU with no GPU, for 40 million game frames
 (about 185 hours of play at 60 frames per second; first planned as 10 million, see the log). <b>The goal:</b> a mean score of at least <b>300</b> over 10 full games
 (all 5 lives, unclipped score) on seeds it never trained on. Every run is tracked in MLflow; this page is rebuilt from that data every 15 minutes.</p>
-<p class="muted small">New here? Start with the three explainer videos on <a href="model.html">The model</a> tab. The finished
+<div class="box" style="border-color:var(--good)"><h3>🎯 Result: goal met</h3>
+<p>The final agent (40 M frames) averaged <b>391.6</b> over the 10 fixed goal-check games (full games, all 5 lives, real score; every game between 341 and 424).
+On <b>100 fresh games</b> it averaged <b>407.6 ± 6.7</b>, with 99 of 100 games at 300 or more. The rules for this test were written down before the run ended
+(see the log). Training took 9.6 hours on the laptop CPU. The model is on the <a href="https://github.com/JCA374/ppo-breakout/releases/tag/v1.0">v1.0 release</a>.</p></div>
+<p class="muted small">New here? Start with the explainer videos on <a href="model.html">The model</a> tab. The finished
 agent plays on the <a href="play.html">Play</a> tab.</p>
   <p class="countdown" id="countdown"></p>
   <p class="muted" id="updated"></p>

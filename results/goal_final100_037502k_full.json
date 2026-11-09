@@ -1,0 +1,15 @@
+{
+ "t": "2026-11-09 06:27:33",
+ "policy": "checkpoints/main/model_037502k.pt",
+ "frames": 37502976,
+ "n": 100,
+ "score": 385.79,
+ "ci": [
+  367.3066952948715,
+  404.27330470512857
+ ],
+ "min": 51.0,
+ "max": 809.0,
+ "label": "37.5 M model \u00b7 100 fresh games \u00b7 full game",
+ "note": "pre-registered final test, seeds 900000-900099, protocol full; standard error 9.4"
+}

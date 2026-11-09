@@ -1,0 +1,50 @@
+{
+ "t": "2026-11-09 05:34:10",
+ "policy": "checkpoints/main/model_039997k.pt",
+ "model": "40 M frames (final checkpoint)",
+ "goal_check_10": {
+  "seeds": "12345-12354",
+  "protocol": "full game",
+  "mean": 391.6,
+  "scores": [
+   384.0,
+   381.0,
+   409.0,
+   424.0,
+   409.0,
+   423.0,
+   402.0,
+   377.0,
+   341.0,
+   366.0
+  ],
+  "ci": [
+   372.6021922991099,
+   410.59780770089014
+  ]
+ },
+ "goal_check_10_wrappers": {
+  "mean": 407.5,
+  "scores": [
+   408.0,
+   431.0,
+   413.0,
+   398.0,
+   369.0,
+   433.0,
+   412.0,
+   413.0,
+   374.0,
+   424.0
+  ]
+ },
+ "true_level_100": {
+  "seeds": "900000-900099",
+  "full": 407.58,
+  "full_se": 6.718017083586014,
+  "wrappers": 410.66,
+  "wrappers_se": 7.370788919303638,
+  "share_300_full": 0.99
+ },
+ "verdict": "PASS: mean >= 300 over 10 evaluation games (391.6), confirmed by 100 fresh games (407.6 \u00b1 6.7)"
+}
