@@ -14,22 +14,22 @@ chapters:
   ch05: Side by side
 sources:
   ch01:
-    path: /home/jonas/code/games/ppo/video/ppo4/script.md
+    path: video/ppo4/script.md
     sha1: 9fe9f4f48db9b1447660201d88b2ac413d22b8fe
     section: Two million frames
   ch02:
-    path: /home/jonas/code/games/ppo/video/ppo4/script.md
+    path: video/ppo4/script.md
     sha1: 9fe9f4f48db9b1447660201d88b2ac413d22b8fe
     section: Ten million frames
   ch03:
-    path: /home/jonas/code/games/ppo/video/ppo4/script.md
+    path: video/ppo4/script.md
     sha1: 9fe9f4f48db9b1447660201d88b2ac413d22b8fe
     section: Twenty million frames
   ch04:
-    path: /home/jonas/code/games/ppo/video/ppo4/script.md
+    path: video/ppo4/script.md
     sha1: 9fe9f4f48db9b1447660201d88b2ac413d22b8fe
     section: Forty million frames
   ch05:
-    path: /home/jonas/code/games/ppo/video/ppo4/script.md
+    path: video/ppo4/script.md
     sha1: 9fe9f4f48db9b1447660201d88b2ac413d22b8fe
     section: Side by side

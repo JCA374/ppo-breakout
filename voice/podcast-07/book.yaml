@@ -1,0 +1,14 @@
+title: 'Episode 07: Four hundred'
+kind: prose
+author: ''
+narrator: Kokoro TTS (af_heart)
+narration:
+  narrator: af_heart
+  speed: 0.95
+  paragraph_pause: 0.6
+chapters:
+  ch01: 'Episode 07: Four hundred'
+sources:
+  ch01:
+    path: podcast/episode-07.md
+    sha1: fe67adab0362c187b4c99a905e3ecff49e6ce7ff

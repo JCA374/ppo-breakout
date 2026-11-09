@@ -10,5 +10,5 @@ chapters:
   ch01: 'Episode 05: Halfway, and a correction'
 sources:
   ch01:
-    path: /home/jonas/code/games/ppo/podcast/episode-05.md
+    path: podcast/episode-05.md
     sha1: b3e95bf687b3a785a85202e89342b5852ce13981

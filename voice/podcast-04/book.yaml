@@ -10,5 +10,5 @@ chapters:
   ch01: 'Episode 04: Triple digits'
 sources:
   ch01:
-    path: /home/jonas/code/games/ppo/podcast/episode-04.md
+    path: podcast/episode-04.md
     sha1: 3b208d04be95e2034043fe89c293516209126dc5

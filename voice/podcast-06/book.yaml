@@ -10,5 +10,5 @@ chapters:
   ch01: 'Episode 06: Over the line, but not yet'
 sources:
   ch01:
-    path: /home/jonas/code/games/ppo/podcast/episode-06.md
+    path: podcast/episode-06.md
     sha1: 0527cb858008677908c8bf8715a58c1db42afb12

@@ -15,26 +15,26 @@ chapters:
   ch06: Three grades for the same game
 sources:
   ch01:
-    path: /home/jonas/code/games/ppo/video/ppo2/script.md
+    path: video/ppo2/script.md
     sha1: c0371a79b6d4cb3bef866264fe12cf2173bf2246
     section: Which move earned the points?
   ch02:
-    path: /home/jonas/code/games/ppo/video/ppo2/script.md
+    path: video/ppo2/script.md
     sha1: c0371a79b6d4cb3bef866264fe12cf2173bf2246
     section: The critic's yardstick
   ch03:
-    path: /home/jonas/code/games/ppo/video/ppo2/script.md
+    path: video/ppo2/script.md
     sha1: c0371a79b6d4cb3bef866264fe12cf2173bf2246
     section: One step of surprise
   ch04:
-    path: /home/jonas/code/games/ppo/video/ppo2/script.md
+    path: video/ppo2/script.md
     sha1: c0371a79b6d4cb3bef866264fe12cf2173bf2246
     section: Looking all the way ahead
   ch05:
-    path: /home/jonas/code/games/ppo/video/ppo2/script.md
+    path: video/ppo2/script.md
     sha1: c0371a79b6d4cb3bef866264fe12cf2173bf2246
     section: Generalized advantage estimation
   ch06:
-    path: /home/jonas/code/games/ppo/video/ppo2/script.md
+    path: video/ppo2/script.md
     sha1: c0371a79b6d4cb3bef866264fe12cf2173bf2246
     section: Three grades for the same game

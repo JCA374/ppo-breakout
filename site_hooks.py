@@ -68,7 +68,7 @@ def models():
     for c in sorted(picks, key=_frames_of, reverse=True):
         f = _frames_of(c)
         note = "goal-checked best model" if c == best_path else "checkpoint"
-        out.append({"id": f"f{f // 1000:06d}k", "label": f"After {_fm(f)}", "path": c, "note": note})
+        out.append({"id": f"f{f // 1000:06d}k", "label": f"After {_fm(f)}", "path": os.path.relpath(c, ROOT), "note": note})
     return out
 
 
@@ -87,6 +87,7 @@ def games():
 
 
 def render_play(policy_path, game, out_mp4):
+    policy_path = str(ROOT / policy_path)
     import torch
     torch.set_num_threads(1)
     from record import load, record_episode

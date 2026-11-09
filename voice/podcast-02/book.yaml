@@ -10,5 +10,5 @@ chapters:
   ch01: 'Episode 02: The ball is found'
 sources:
   ch01:
-    path: /home/jonas/code/games/ppo/podcast/episode-02.md
+    path: podcast/episode-02.md
     sha1: d68adcf75fdf23d4ee1b78a5da473176e359936f

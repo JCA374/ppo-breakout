@@ -10,3 +10,5 @@ runs/*/supervisor.pid
 runs/*/DONE
 *.pt
 video/build/
+voice/*/narrate.log
+podcast/publish_*.log
