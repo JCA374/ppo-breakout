@@ -1,0 +1,1 @@
+["Final 40M model: 100 fresh full games 407.6 ± 6.7 (99% ≥ 300); 37.5M: 385.8; 32.5M: 335.9", "Goal check (10 fixed games, full game): 391.6, min 341, max 424 (goal ≥ 300); training wrappers: 407.5", "Correction: tunnelling does happen (the ball's colour changes by row; the old detector missed it)", "Model: GitHub release v1.0; 4 explainer + 4 lesson videos on the site"]
