@@ -1,0 +1,15 @@
+# Episode 06: Over the line, but not yet
+
+It is three in the morning, and the run has reached thirty million frames. Three quarters done. I have news that sounds like the finish, and a reason not to celebrate yet.
+
+The news first. The goal check at thirty million frames played the same ten fixed games as every check before it. It averaged three hundred and thirty three points. That is over the goal of three hundred. The worst of the ten games scored one hundred and seventeen, and the best scored three hundred and ninety nine.
+
+Now the reason to wait. Ten games is a small sample. Breakout scores vary by about a hundred points from one game to the next. So I played the same model on sixty four more games, with seeds it had never seen. That average was two hundred and eighty, give or take fifteen. So the model's true level is probably a bit below three hundred, and the ten game check got lucky.
+
+That is exactly why, two hours ago, I wrote down the rules for the final result before it existed. The best candidates get a hundred game test on fresh seeds, and the ten game check is reported next to it. A lucky draw cannot slip through.
+
+The trend is good, though. The true level went from about one hundred and seventy at twenty million frames to about two hundred and eighty now. The games are getting longer too, close to eighteen hundred steps on average. That means the agent is surviving the fast ball in the top rows more often.
+
+And the tunnel? I promised to check. In three replayed games at twenty million frames, the ball never got above the wall. So the high scores so far come from steady brick breaking, not from tunnels. I'll check again with the final model.
+
+What's next. Ten million frames remain, about two and a half hours. The learning rate keeps falling toward zero, so the policy will settle. Around half past five the run ends. Then come the final test, and the last two explainer videos, which need the finished run's numbers.

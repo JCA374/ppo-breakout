@@ -1,0 +1,38 @@
+[
+ {
+  "scene": "ch01",
+  "title": "Why be careful",
+  "file": "ch01.mp3",
+  "seconds": 15.856
+ },
+ {
+  "scene": "ch02",
+  "title": "The ratio",
+  "file": "ch02.mp3",
+  "seconds": 16.588
+ },
+ {
+  "scene": "ch03",
+  "title": "The clip",
+  "file": "ch03.mp3",
+  "seconds": 19.566
+ },
+ {
+  "scene": "ch04",
+  "title": "Why flat means safe",
+  "file": "ch04.mp3",
+  "seconds": 18.181
+ },
+ {
+  "scene": "ch05",
+  "title": "This run's numbers",
+  "file": "ch05.mp3",
+  "seconds": 24.764
+ },
+ {
+  "scene": "ch06",
+  "title": "Small, safe steps add up",
+  "file": "ch06.mp3",
+  "seconds": 14.681
+ }
+]

@@ -1,0 +1,14 @@
+title: 'Episode 05: Halfway, and a correction'
+kind: prose
+author: ''
+narrator: Kokoro TTS (af_heart)
+narration:
+  narrator: af_heart
+  speed: 0.95
+  paragraph_pause: 0.6
+chapters:
+  ch01: 'Episode 05: Halfway, and a correction'
+sources:
+  ch01:
+    path: /home/jonas/code/games/ppo/podcast/episode-05.md
+    sha1: b3e95bf687b3a785a85202e89342b5852ce13981

@@ -1,0 +1,1 @@
+At ten million frames, it follows the ball and returns it again and again. It clears the low rows one brick at a time. Fifty points.

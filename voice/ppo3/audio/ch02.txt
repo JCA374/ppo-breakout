@@ -1,0 +1,1 @@
+So [PPO](//pˌiːpˌiːˈQ//) measures how far it has moved, one action at a time. The ratio is the action's new probability divided by its old one. A ratio of one means nothing changed. Above one, the action became more likely. Below one, less likely.

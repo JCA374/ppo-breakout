@@ -1,0 +1,1 @@
+On a flat stretch the gradient is zero. So once an action has moved ten percent the way its advantage asks, that sample stops pushing. And because the objective takes the smaller value, a change in the wrong direction still pays the full penalty. The clip limits greed, not correction.

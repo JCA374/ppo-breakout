@@ -1,0 +1,1 @@
+Entropy measures how random the policy still is. With four buttons, it starts at its maximum: pure chance. In this run it fell to about half of that maximum by the end, and it never collapsed. If it dropped to near zero early, the agent would stop exploring, and stop improving.

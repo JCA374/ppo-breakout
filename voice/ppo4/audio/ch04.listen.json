@@ -1,0 +1,84 @@
+{
+ "chapter": "ch04",
+ "model": "base.en",
+ "audio": "ch04.wav",
+ "duration": 7.4,
+ "script_sha1": "994621935303ca93667d37c95e90db2704feb4e8",
+ "audio_sha1": "e18a317a581925ddbbc6be0d765e8755b6a6d08a",
+ "checked": "2026-11-09",
+ "words": [],
+ "pace": [],
+ "stress": [],
+ "seconds": 6,
+ "transcript": [
+  [
+   " The",
+   0.0
+  ],
+  [
+   " final",
+   0.34
+  ],
+  [
+   " agent",
+   0.52
+  ],
+  [
+   " plays",
+   0.96
+  ],
+  [
+   " the",
+   1.32
+  ],
+  [
+   " same",
+   1.58
+  ],
+  [
+   " game.",
+   1.8
+  ],
+  [
+   " It",
+   2.76
+  ],
+  [
+   " breaks",
+   2.78
+  ],
+  [
+   " through",
+   2.96
+  ],
+  [
+   " sooner",
+   3.26
+  ],
+  [
+   " and",
+   3.44
+  ],
+  [
+   " it",
+   4.08
+  ],
+  [
+   " finishes",
+   4.14
+  ],
+  [
+   " with",
+   4.46
+  ],
+  [
+   " 404",
+   4.76
+  ],
+  [
+   " points.",
+   5.26
+  ]
+ ],
+ "dismissed": []
+}

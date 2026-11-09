@@ -1,0 +1,8 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+/home/jonas/.local/lib/python3.12/site-packages/torch/nn/modules/rnn.py:1009: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.2 and num_layers=1
+  super().__init__("LSTM", *args, **kwargs)
+/home/jonas/.local/lib/python3.12/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+narrator=af_heart speed=0.95 characters=-
+  ch01: 1/7 paragraphs (1 rendered)  ch01: 2/7 paragraphs (2 rendered)  ch01: 3/7 paragraphs (3 rendered)  ch01: 4/7 paragraphs (4 rendered)  ch01: 5/7 paragraphs (5 rendered)  ch01: 6/7 paragraphs (6 rendered)  ch01: 7/7 paragraphs (7 rendered)
+  -> voice/podcast-05/audio/ch01.wav  2.2 min audio in 2.6 min

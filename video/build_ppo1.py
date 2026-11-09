@@ -129,8 +129,12 @@ def s3(t, T):
 R = np.clip(EP["reward"], 0, 1); V = EP["value"]
 G = np.zeros_like(R, dtype=float); acc = 0.0
 for k in range(len(R) - 1, -1, -1):
-    acc = R[k] + 0.99 * acc * (0 if (k + 1 < len(R) and EP["lives"][k] < (EP["lives"][k - 1] if k else 5)) else 1); G[k] = acc
-W0 = 150; W1 = min(len(R), W0 + 220)
+    lost = EP["lives"][k] < (EP["lives"][k - 1] if k else 5)        # a life ended at step k: no future after it
+    acc = R[k] + 0.99 * acc * (0 if lost else 1); G[k] = acc
+# the 220-step window (after the first 100 steps) where better- and worse-than-expected are most balanced
+_cands = [w for w in range(100, max(101, len(R) - 220), 10)]
+W0 = min(_cands, key=lambda w: abs((G[w:w + 220] > V[w:w + 220]).mean() - 0.5)) if _cands else 0
+W1 = min(len(R), W0 + 220)
 
 
 def s4(t, T):
@@ -145,7 +149,7 @@ def s4(t, T):
         d.line([X(k), Y(V[k]), X(k), Y(G[k])], fill=col, width=4)
     pts_v = [(X(k), Y(V[k])) for k in range(W0, m)]; pts_g = [(X(k), Y(G[k])) for k in range(W0, m)]
     if len(pts_v) > 1:
-        d.line(pts_v, fill=ACC, width=3); d.line(pts_g, fill=INK, width=2)
+        d.line(pts_v, fill=ACC, width=3); d.line(pts_g, fill=INK, width=3)
     for k in range(W0, m):
         if R[k] > 0:
             d.ellipse([X(k) - 5, y0 + h + 8, X(k) + 5, y0 + h + 18], fill=GOOD)

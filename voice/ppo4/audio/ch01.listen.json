@@ -1,0 +1,120 @@
+{
+ "chapter": "ch01",
+ "model": "base.en",
+ "audio": "ch01.wav",
+ "duration": 9.6,
+ "script_sha1": "f4f0994fcaa4c06515dd68becc0f8749de63a787",
+ "audio_sha1": "cb44ed4c75a62591749e697eb9bbda71f9e9214b",
+ "checked": "2026-11-09",
+ "words": [],
+ "pace": [],
+ "stress": [],
+ "seconds": 20,
+ "transcript": [
+  [
+   " After",
+   0.0
+  ],
+  [
+   " two",
+   0.48
+  ],
+  [
+   " million",
+   0.68
+  ],
+  [
+   " frames,",
+   0.94
+  ],
+  [
+   " the",
+   1.78
+  ],
+  [
+   " agent",
+   1.9
+  ],
+  [
+   " has",
+   2.18
+  ],
+  [
+   " barely",
+   2.42
+  ],
+  [
+   " started.",
+   2.68
+  ],
+  [
+   " It",
+   3.8
+  ],
+  [
+   " launches",
+   3.82
+  ],
+  [
+   " the",
+   4.06
+  ],
+  [
+   " ball",
+   4.4
+  ],
+  [
+   " and",
+   4.58
+  ],
+  [
+   " misses",
+   4.86
+  ],
+  [
+   " it",
+   5.08
+  ],
+  [
+   " almost",
+   5.3
+  ],
+  [
+   " at",
+   5.58
+  ],
+  [
+   " once.",
+   5.88
+  ],
+  [
+   " Two",
+   6.86
+  ],
+  [
+   " points",
+   6.86
+  ],
+  [
+   " and",
+   7.18
+  ],
+  [
+   " the",
+   7.6
+  ],
+  [
+   " game",
+   7.68
+  ],
+  [
+   " is",
+   7.9
+  ],
+  [
+   " over.",
+   8.08
+  ]
+ ],
+ "dismissed": []
+}

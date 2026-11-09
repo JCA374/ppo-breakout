@@ -1,0 +1,38 @@
+[
+ {
+  "scene": "ch01",
+  "title": "Why look inside",
+  "file": "ch01.mp3",
+  "seconds": 11.154
+ },
+ {
+  "scene": "ch02",
+  "title": "Entropy",
+  "file": "ch02.mp3",
+  "seconds": 18.181
+ },
+ {
+  "scene": "ch03",
+  "title": "KL divergence",
+  "file": "ch03.mp3",
+  "seconds": 14.028
+ },
+ {
+  "scene": "ch04",
+  "title": "Clip fraction",
+  "file": "ch04.mp3",
+  "seconds": 13.375
+ },
+ {
+  "scene": "ch05",
+  "title": "The critic",
+  "file": "ch05.mp3",
+  "seconds": 22.7
+ },
+ {
+  "scene": "ch06",
+  "title": "A flat start is not a bug",
+  "file": "ch06.mp3",
+  "seconds": 14.002
+ }
+]

@@ -1,0 +1,1 @@
+For the first two million frames, the score stayed at two points, while all these signals looked healthy. That is what a slow start looks like. Still, it was the flat score that made me check the plan, and find the units mistake.

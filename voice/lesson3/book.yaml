@@ -1,0 +1,40 @@
+title: Reading PPO's health signals
+kind: voiceover
+author: ''
+narrator: Kokoro TTS (af_heart)
+narration:
+  narrator: af_heart
+  speed: 1.05
+  paragraph_pause: 0.6
+chapters:
+  ch01: Why look inside
+  ch02: Entropy
+  ch03: KL divergence
+  ch04: Clip fraction
+  ch05: The critic
+  ch06: A flat start is not a bug
+sources:
+  ch01:
+    path: /home/jonas/code/games/ppo/video/lesson3/script.md
+    sha1: bd46df99307d5adb266661416a490bcafd84ad12
+    section: Why look inside
+  ch02:
+    path: /home/jonas/code/games/ppo/video/lesson3/script.md
+    sha1: bd46df99307d5adb266661416a490bcafd84ad12
+    section: Entropy
+  ch03:
+    path: /home/jonas/code/games/ppo/video/lesson3/script.md
+    sha1: bd46df99307d5adb266661416a490bcafd84ad12
+    section: KL divergence
+  ch04:
+    path: /home/jonas/code/games/ppo/video/lesson3/script.md
+    sha1: bd46df99307d5adb266661416a490bcafd84ad12
+    section: Clip fraction
+  ch05:
+    path: /home/jonas/code/games/ppo/video/lesson3/script.md
+    sha1: bd46df99307d5adb266661416a490bcafd84ad12
+    section: The critic
+  ch06:
+    path: /home/jonas/code/games/ppo/video/lesson3/script.md
+    sha1: bd46df99307d5adb266661416a490bcafd84ad12
+    section: A flat start is not a bug

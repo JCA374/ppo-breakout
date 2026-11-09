@@ -1,0 +1,2 @@
+== ch01  2:11 audio, checked in 83s: 1 to listen to  (3 dismissed by the second model)
+    1:29  swapped  expected: 'eighteen'                       heard: 'one thousand eight'

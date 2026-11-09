@@ -1,0 +1,160 @@
+{
+ "chapter": "ch04",
+ "model": "base.en",
+ "audio": "ch04.wav",
+ "duration": 13.3,
+ "script_sha1": "a2a1d82cea067490aa3abc74ec6be858f72e8ff5",
+ "audio_sha1": "143c8615e31d08b222f22dd0bf08c4fad5370b58",
+ "checked": "2026-11-09",
+ "words": [],
+ "pace": [],
+ "stress": [],
+ "seconds": 7,
+ "transcript": [
+  [
+   " The",
+   0.0
+  ],
+  [
+   " clip",
+   0.32
+  ],
+  [
+   " fraction",
+   0.48
+  ],
+  [
+   " is",
+   0.7
+  ],
+  [
+   " the",
+   1.3
+  ],
+  [
+   " share",
+   1.44
+  ],
+  [
+   " of",
+   1.7
+  ],
+  [
+   " samples",
+   1.9
+  ],
+  [
+   " whose",
+   2.26
+  ],
+  [
+   " probability",
+   2.58
+  ],
+  [
+   " ratio",
+   2.9
+  ],
+  [
+   " hit",
+   3.68
+  ],
+  [
+   " the",
+   4.0
+  ],
+  [
+   " clip.",
+   4.16
+  ],
+  [
+   " Here",
+   5.0
+  ],
+  [
+   " it",
+   5.1
+  ],
+  [
+   " was",
+   5.22
+  ],
+  [
+   " about",
+   5.34
+  ],
+  [
+   " 7%.",
+   5.48
+  ],
+  [
+   " Zero",
+   6.58
+  ],
+  [
+   " would",
+   7.04
+  ],
+  [
+   " mean",
+   7.4
+  ],
+  [
+   " the",
+   7.56
+  ],
+  [
+   " clip",
+   7.7
+  ],
+  [
+   " never",
+   7.86
+  ],
+  [
+   " matters.",
+   8.22
+  ],
+  [
+   " Half",
+   9.46
+  ],
+  [
+   " would",
+   9.5
+  ],
+  [
+   " mean",
+   9.64
+  ],
+  [
+   " almost",
+   9.78
+  ],
+  [
+   " every",
+   10.22
+  ],
+  [
+   " update",
+   10.5
+  ],
+  [
+   " is",
+   11.0
+  ],
+  [
+   " pushing",
+   11.22
+  ],
+  [
+   " against",
+   11.46
+  ],
+  [
+   " it.",
+   11.88
+  ]
+ ],
+ "dismissed": []
+}

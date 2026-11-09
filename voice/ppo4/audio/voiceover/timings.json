@@ -1,0 +1,32 @@
+[
+ {
+  "scene": "ch01",
+  "title": "Two million frames",
+  "file": "ch01.mp3",
+  "seconds": 9.639
+ },
+ {
+  "scene": "ch02",
+  "title": "Ten million frames",
+  "file": "ch02.mp3",
+  "seconds": 9.169
+ },
+ {
+  "scene": "ch03",
+  "title": "Twenty million frames",
+  "file": "ch03.mp3",
+  "seconds": 14.184
+ },
+ {
+  "scene": "ch04",
+  "title": "Forty million frames",
+  "file": "ch04.mp3",
+  "seconds": 7.419
+ },
+ {
+  "scene": "ch05",
+  "title": "Side by side",
+  "file": "ch05.mp3",
+  "seconds": 9.117
+ }
+]

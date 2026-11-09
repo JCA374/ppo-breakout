@@ -1,0 +1,35 @@
+title: Watching it learn
+kind: voiceover
+author: ''
+narrator: Kokoro TTS (af_heart)
+narration:
+  narrator: af_heart
+  speed: 1.05
+  paragraph_pause: 0.6
+chapters:
+  ch01: Two million frames
+  ch02: Ten million frames
+  ch03: Twenty million frames
+  ch04: Forty million frames
+  ch05: Side by side
+sources:
+  ch01:
+    path: /home/jonas/code/games/ppo/video/ppo4/script.md
+    sha1: 9fe9f4f48db9b1447660201d88b2ac413d22b8fe
+    section: Two million frames
+  ch02:
+    path: /home/jonas/code/games/ppo/video/ppo4/script.md
+    sha1: 9fe9f4f48db9b1447660201d88b2ac413d22b8fe
+    section: Ten million frames
+  ch03:
+    path: /home/jonas/code/games/ppo/video/ppo4/script.md
+    sha1: 9fe9f4f48db9b1447660201d88b2ac413d22b8fe
+    section: Twenty million frames
+  ch04:
+    path: /home/jonas/code/games/ppo/video/ppo4/script.md
+    sha1: 9fe9f4f48db9b1447660201d88b2ac413d22b8fe
+    section: Forty million frames
+  ch05:
+    path: /home/jonas/code/games/ppo/video/ppo4/script.md
+    sha1: 9fe9f4f48db9b1447660201d88b2ac413d22b8fe
+    section: Side by side

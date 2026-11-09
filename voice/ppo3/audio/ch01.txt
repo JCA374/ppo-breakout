@@ -1,0 +1,1 @@
+[PPO](//pˌiːpˌiːˈQ//) learns from games its own policy just played. If one update changes the policy a lot, the data no longer describes the new player. A bad step makes a worse player, who collects worse data, and hours of learning can unravel.

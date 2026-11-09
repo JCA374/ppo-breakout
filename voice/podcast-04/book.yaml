@@ -1,0 +1,14 @@
+title: 'Episode 04: Triple digits'
+kind: prose
+author: ''
+narrator: Kokoro TTS (af_heart)
+narration:
+  narrator: af_heart
+  speed: 0.95
+  paragraph_pause: 0.6
+chapters:
+  ch01: 'Episode 04: Triple digits'
+sources:
+  ch01:
+    path: /home/jonas/code/games/ppo/podcast/episode-04.md
+    sha1: 3b208d04be95e2034043fe89c293516209126dc5

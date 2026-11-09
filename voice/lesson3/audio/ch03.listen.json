@@ -1,0 +1,181 @@
+{
+ "chapter": "ch03",
+ "model": "base.en",
+ "audio": "ch03.wav",
+ "duration": 14.0,
+ "script_sha1": "8fea45c1b02f7b2cb4c71f6c44ba2c131757704e",
+ "audio_sha1": "abcb8b92413bcdb69ff0054fa48912237be2bce2",
+ "checked": "2026-11-09",
+ "words": [],
+ "pace": [],
+ "stress": [],
+ "seconds": 24,
+ "transcript": [
+  [
+   " The",
+   0.0
+  ],
+  [
+   " approximate",
+   0.34
+  ],
+  [
+   " KL",
+   0.78
+  ],
+  [
+   " divergence",
+   1.2
+  ],
+  [
+   " says",
+   1.52
+  ],
+  [
+   " how",
+   2.24
+  ],
+  [
+   " much",
+   2.54
+  ],
+  [
+   " the",
+   2.74
+  ],
+  [
+   " policy",
+   2.92
+  ],
+  [
+   " changed",
+   3.22
+  ],
+  [
+   " in",
+   3.56
+  ],
+  [
+   " one",
+   3.98
+  ],
+  [
+   " round.",
+   4.14
+  ],
+  [
+   " Here",
+   5.2
+  ],
+  [
+   " the",
+   5.26
+  ],
+  [
+   " typical",
+   5.44
+  ],
+  [
+   " value",
+   5.72
+  ],
+  [
+   " was",
+   6.18
+  ],
+  [
+   " 4",
+   6.46
+  ],
+  [
+   ",000ths.",
+   6.74
+  ],
+  [
+   " Values",
+   7.92
+  ],
+  [
+   " 10",
+   8.1
+  ],
+  [
+   " times",
+   8.6
+  ],
+  [
+   " larger",
+   8.9
+  ],
+  [
+   " would",
+   9.24
+  ],
+  [
+   " mean",
+   9.54
+  ],
+  [
+   " the",
+   9.7
+  ],
+  [
+   " steps",
+   9.88
+  ],
+  [
+   " are",
+   10.04
+  ],
+  [
+   " too",
+   10.34
+  ],
+  [
+   " big",
+   10.52
+  ],
+  [
+   " and",
+   10.82
+  ],
+  [
+   " the",
+   11.34
+  ],
+  [
+   " clip",
+   11.44
+  ],
+  [
+   " is",
+   11.58
+  ],
+  [
+   " not",
+   11.84
+  ],
+  [
+   " holding",
+   12.02
+  ],
+  [
+   " them",
+   12.36
+  ],
+  [
+   " back.",
+   12.54
+  ]
+ ],
+ "dismissed": [
+  {
+   "time": 6.7,
+   "para": 0,
+   "kind": "swapped",
+   "expected": "thousandths",
+   "heard": "zeroths",
+   "second": "small.en"
+  }
+ ]
+}
