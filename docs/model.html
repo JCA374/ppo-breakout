@@ -4,16 +4,69 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The model</title>
-<link rel="stylesheet" href="style.css?v=50944cfd">
+<link rel="stylesheet" href="style.css?v=9009e979">
 </head>
 <body>
 <main>
 <h1>The model</h1>
-<p class="lede">One small convolutional network, trained with Proximal Policy Optimization (PPO). Three short narrated videos
-explain the method with this run's own games and numbers; below them is the same material in text, with every setting.</p>
-<h2>The explainer videos</h2>
+<p class="lede">One small neural network, about 1.7 million learned numbers, turns four gray pictures into two answers: which button to press, and how well the game is going.
+It was trained with Proximal Policy Optimization (PPO). This page explains the model itself for an engineer who has never seen one; the videos below also explain how PPO trains it.</p>
+<figure class="vid"><h3>Inside the model</h3><video src="video/themodel.mp4" controls preload="metadata" playsinline></video>
+<figcaption>Under 2 minutes: the architecture, one real moment through the network, its outputs over a game, its internal map and how training shaped it.</figcaption></figure>
+
+<div class="box"><h3>The short version</h3>
+<ul><li><b>A function:</b> input = 4×84×84 numbers (the last four screens), output = 4 probabilities + 1 number.</li>
+<li><b>Two parts:</b> a shared "torso" (3 convolution layers + 1 dense layer) that turns pixels into a 512-number summary, and two "heads" that read it.</li>
+<li><b>The actor head</b> picks the button; <b>the critic head</b> estimates the reward still to come. The critic is only used during training, to judge the actor's choices.</li>
+<li><b>All 1,686,693 numbers</b> (weights) started random and were adjusted by PPO in 9,765 rounds of updates (16 gradient steps each), using nothing but the game score.</li></ul></div>
+
+<h2>The architecture, to scale</h2>
+<p>Box height ≈ how much the layer keeps about the picture; "w" = learned weights. 95% of all weights sit in the one dense layer, which connects every one of the 3,136 numbers
+coming out of conv3 to each of its 512 outputs. The convolution layers are cheap because each filter is reused at every position of the image.</p>
+<svg viewBox="0 0 840 250" style="width:100%;max-width:900px;display:block;margin:10px 0" role="img" aria-label="network diagram"><rect x="10" y="30" width="110" height="200" rx="10" fill="#3a3f4c"/><text x="65.0" y="122" text-anchor="middle" fill="#fff" font-weight="700" font-size="15">input</text><text x="65.0" y="142" text-anchor="middle" fill="#dde" font-size="12">4×84×84</text><text x="65.0" y="248" text-anchor="middle" fill="var(--muted)" font-size="12">pixels</text><line x1="120" y1="130" x2="140" y2="130" stroke="var(--muted)" stroke-width="2"/><rect x="140" y="48" width="110" height="164" rx="10" fill="#3a3f4c"/><text x="195.0" y="122" text-anchor="middle" fill="#fff" font-weight="700" font-size="15">conv1</text><text x="195.0" y="142" text-anchor="middle" fill="#dde" font-size="12">32×20×20</text><text x="195.0" y="230" text-anchor="middle" fill="var(--muted)" font-size="12">8,224 w</text><line x1="250" y1="130" x2="270" y2="130" stroke="var(--muted)" stroke-width="2"/><rect x="270" y="70" width="110" height="120" rx="10" fill="#3a3f4c"/><text x="325.0" y="122" text-anchor="middle" fill="#fff" font-weight="700" font-size="15">conv2</text><text x="325.0" y="142" text-anchor="middle" fill="#dde" font-size="12">64×9×9</text><text x="325.0" y="208" text-anchor="middle" fill="var(--muted)" font-size="12">32,832 w</text><line x1="380" y1="130" x2="400" y2="130" stroke="var(--muted)" stroke-width="2"/><rect x="400" y="80" width="110" height="100" rx="10" fill="#3a3f4c"/><text x="455.0" y="122" text-anchor="middle" fill="#fff" font-weight="700" font-size="15">conv3</text><text x="455.0" y="142" text-anchor="middle" fill="#dde" font-size="12">64×7×7</text><text x="455.0" y="198" text-anchor="middle" fill="var(--muted)" font-size="12">36,928 w</text><line x1="510" y1="130" x2="530" y2="130" stroke="var(--muted)" stroke-width="2"/><rect x="530" y="45" width="110" height="170" rx="10" fill="#5b7bdb"/><text x="585.0" y="122" text-anchor="middle" fill="#fff" font-weight="700" font-size="15">dense</text><text x="585.0" y="142" text-anchor="middle" fill="#dde" font-size="12">512</text><text x="585.0" y="233" text-anchor="middle" fill="var(--muted)" font-size="12">1,606,144 w</text><line x1="640" y1="130" x2="670" y2="70" stroke="var(--muted)" stroke-width="2"/><line x1="640" y1="130" x2="670" y2="190" stroke="var(--muted)" stroke-width="2"/><rect x="670" y="45" width="150" height="50" rx="10" fill="#e8a33a"/><text x="745" y="66" text-anchor="middle" fill="#111" font-weight="700" font-size="15">actor</text><text x="745" y="84" text-anchor="middle" fill="#111" font-size="12">4 probabilities · 2,052 w</text><rect x="670" y="165" width="150" height="50" rx="10" fill="#5b7bdb"/><text x="745" y="186" text-anchor="middle" fill="#fff" font-weight="700" font-size="15">critic</text><text x="745" y="204" text-anchor="middle" fill="#fff" font-size="12">1 value · 513 w</text></svg>
+
+<h2>Follow one moment through the network</h2>
+<p>A real moment from a 427-point game of the final model. Left to right: the screen; what the network receives (the newest of its 4 pictures);
+what conv1 outputs (32 maps); the 512-number summary; and the two answers.</p>
+<div class="frames"><figure><img style="width:200px;height:262px" src="viz/screen.png">screen</figure><figure><img style="width:200px" src="viz/in_3.png">input (1 of 4)</figure></div>
+<img class="wide" src="viz/maps_conv1.png" alt="conv1 maps" style="max-width:720px">
+<img class="wide" src="viz/dense.png" alt="512 summary numbers" style="max-width:720px">
+<div class="tablewrap"><table class="t" style="max-width:560px"><tr><th>Output</th><th>Value</th><th>Meaning</th></tr>
+<tr><td>actor: NOOP</td><td class="num">33%</td><td rowspan="4">probabilities; the agent <i>samples</i> its button from them (here it drew NOOP)</td></tr>
+<tr><td>actor: FIRE</td><td class="num">62%</td></tr><tr><td>actor: RIGHT</td><td class="num">0%</td></tr><tr><td>actor: LEFT</td><td class="num">5%</td></tr>
+<tr><td>critic: value</td><td class="num">3.03</td><td>expected future reward: bricks still to break in this life, each counted as 1 and discounted by 0.99 per step</td></tr></table></div>
+<p class="muted small">The pictures of all three convolution layers, the learned filters and saliency maps are on <a href="senses.html">How it sees</a>.</p>
+
+<h2>The two heads over a game</h2>
+<p>240 consecutive steps (16 seconds of play). Top: the actor's four probabilities, stacked. Bottom: the critic's value; green lines = a brick broke, dotted = the moment above.
+The value rises as the next brick gets closer and drops the instant it breaks: that reward is now in the past, no longer "to come". The probabilities change every
+step as the paddle chases the ball. FIRE is often likely even while the ball is in play; there it does nothing, so the agent never needed to unlearn it.</p>
+<img class="wide" src="viz/timeline.png" alt="actor and critic outputs over a game">
+
+<h2>The model's own map of the game</h2>
+<p>Every second moment of the same game, its 512-number summary, flattened onto two dimensions with PCA (the two directions in which the summaries differ most;
+together they hold 41% of the variation). Each dot is a moment. The summaries fall into <b>two groups</b>:</p>
+<ul><li><b>left:</b> the early game, with about 73% of the wall still standing; the critic's value is high (about 4.3): many bricks still to win;</li>
+<li><b>right:</b> the late game, with about 7% of the wall left; the value is low (about 0.6): few bricks remain.</li></ul>
+<p>Nobody told the network about game phases. It found them because they matter for the value. The right panel shows the actions are mixed within both groups:
+which button to press depends on finer details (the ball and the paddle) than the phase.</p>
+<img class="wide" src="viz/embedding.png" alt="PCA map of the network's summaries">
+
+<h2 id="training">How training shaped it</h2>
+<p>How similar each layer's weights are after 0.5 M frames and at the end (correlation; 1.0 = unchanged). The first layer changed least: its crude detectors were useful early.
+The deeper the layer, the more it changed; the heads most of all. The actor's weights grew tenfold in size (norm 0.5 → 5.0): a near-uniform random policy became a confident one.</p>
+<div class="tablewrap"><table class="t" style="max-width:640px"><tr><th>Layer</th><th>correlation 0.5 M vs 40 M</th><th>10 M vs 40 M</th><th>weight norm 0.5 M → 40 M</th></tr>
+<tr><td>conv1</td><td class="num">0.78</td><td class="num">0.93</td><td class="num">8.3 → 11.0</td></tr>
+<tr><td>conv2</td><td class="num">0.63</td><td class="num">0.87</td><td class="num">12.1 → 19.9</td></tr>
+<tr><td>conv3</td><td class="num">0.67</td><td class="num">0.88</td><td class="num">11.9 → 19.3</td></tr>
+<tr><td>dense</td><td class="num">0.48</td><td class="num">0.79</td><td class="num">32.8 → 69.5</td></tr>
+<tr><td>actor</td><td class="num">0.43</td><td class="num">0.90</td><td class="num">0.5 → 5.0</td></tr>
+<tr><td>critic</td><td class="num">0.28</td><td class="num">0.86</td><td class="num">1.1 → 2.6</td></tr></table></div>
+
+<h2>The explainer videos about PPO</h2>
+<p class="muted small">How the training method works: the loop, the advantages, the clipped update, and the agent at four stages.</p>
 <div id="films"></div>
-<h2>The network</h2>
+<h2>The network, layer by layer</h2>
 <div class="box">
 <p>The "Nature CNN" from DeepMind's 2015 DQN paper, with two heads. About 1.69 million weights; almost all of them (1.6 M) sit in the one dense layer.</p>
 <table class="t">

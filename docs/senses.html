@@ -4,14 +4,31 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How it sees</title>
-<link rel="stylesheet" href="style.css?v=50944cfd">
+<link rel="stylesheet" href="style.css?v=9009e979">
 </head>
 <body>
 <main>
 <h1>How it sees</h1>
 <p class="lede">The agent gets <b>no game state at all</b>: no ball position, no paddle position, no brick map. Its only
-input is the last four screens, shrunk to 84×84 pixels of gray. Everything it knows about where the ball is
-and where it is going, it has to work out from those pixels.</p>
+input is the last four screens, shrunk to 84×84 pixels of gray. Everything it knows about where the ball is and where it is going,
+it has to work out from those pixels. This page follows a real input through the trained network, step by step. No machine learning background needed.</p>
+<figure class="vid"><video src="video/howitsees.mp4" controls preload="metadata" playsinline></video>
+<figcaption>Video, under 2 minutes: the same story as this page, with the real input and the real network. Narration checked with Whisper.</figcaption></figure>
+
+<div class="box"><h3>The short version</h3>
+<ol><li><b>Input:</b> 4 gray pictures of 84×84 numbers (0–255): the last four moments of the game.</li>
+<li><b>Three convolution layers</b> slide small learned patterns ("filters") over the pictures and output maps of where each pattern appears: first edges, the ball, the paddle; deeper, combinations of them.</li>
+<li>A <b>dense layer</b> squeezes all maps into 512 numbers: a summary of the moment.</li>
+<li>Two small <b>heads</b> read the summary: the actor (which button) and the critic (how well it's going). See <a href="model.html">The model</a>.</li>
+<li>Nothing here was designed by hand. Every filter was learned from the game score alone.</li></ol></div>
+
+<h2>1. What goes in: numbers</h2>
+<p>A computer image is a grid of numbers. The agent's grid is 84×84, each number a brightness from 0 (black) to 255 (white).
+Below, left, the real screen at one moment of a game played by the final model. Middle: what the agent actually receives (only the newest of its four pictures shown).
+Right: a 16×16 zoom around the ball. The ball is a handful of pixels with values near 100 in a field of zeros. That is all the network has to go on.</p>
+<div class="frames"><figure><img style="width:240px;height:315px" src="viz/screen.png" alt="the game screen">the screen (210×160 colour)</figure>
+<figure><img style="width:252px" src="viz/in_3.png" alt="84x84 gray input">the input (84×84 gray)</figure>
+<figure><img style="width:330px;image-rendering:auto" src="viz/pixels.png" alt="pixel values around the ball">the numbers around the ball</figure></div>
 <div class="box">
 <h3>From the screen to the input, step by step</h3>
 <table class="t">
@@ -26,7 +43,45 @@ and where it is going, it has to work out from those pixels.</p>
 BreakoutNoFrameskip-v4. The colour replays on this site are recorded through gymnasium's ALE with the same wrappers, because
 envpool doesn't return colour frames.</p>
 </div>
-<h2>A real moment, as the agent sees it</h2>
+
+<h2>2. Why four pictures</h2>
+<p>A single picture says <i>where</i> the ball is, not where it is <i>going</i>. So the input is a stack of the last four pictures: an array of 4×84×84 numbers.
+The network gets all four at once, as if they were four colour channels of one image. On the right, the four positions of the ball, coloured from old to new:
+the trail gives direction and speed. (The paddle also moved.)</p>
+<div class="frames"><figure><img src="viz/in_0.png" alt="frame 0">t−3</figure><figure><img src="viz/in_1.png" alt="frame 1">t−2</figure><figure><img src="viz/in_2.png" alt="frame 2">t−1</figure><figure><img src="viz/in_3.png" alt="frame 3">now</figure>
+<figure><img src="viz/motion.png" alt="motion">what changed (old → new: blue, light blue, yellow, red)</figure></div>
+
+<h2>3. What the first layer learned</h2>
+<p>The first layer is a <b>convolution</b>. It has 32 <b>filters</b>; each is a small block of learned weights, 8×8 pixels × 4 pictures = 256 numbers.
+A filter is placed on an 8×8 patch of the input, each weight is multiplied with the pixel under it, and the products are added up: one number, large when the patch
+looks like the filter's pattern. Then the filter moves 4 pixels and does it again. 20 positions across × 20 down give a <b>20×20 map</b> of where that pattern occurs.
+32 filters → 32 maps. A ReLU then sets negative results to zero.</p>
+<p>Below, the six filters that compare the pictures over time most strongly (weights in the newest picture differ from the one before, with opposite signs).
+Such a filter responds to something that <i>moved</i>: these are <b>motion detectors</b>. Red weights are positive, blue negative; the last column is the difference "now − t−1".
+Nobody designed these patterns. They started as random numbers and were shaped by the score.</p>
+<img class="wide" src="viz/filters_top.png" alt="the strongest motion filters" style="max-width:560px">
+<p>All 32 filters, at three points in training. Pick one:</p>
+<div class="picker" id="fpick"><button data-f="0.5">after 0.5 M frames</button><button data-f="10">after 10 M</button><button class="on" data-f="40">final (40 M)</button></div>
+<img class="wide" id="fimg" src="viz/filters_40.png" alt="all 32 conv1 filters">
+<p class="muted small">Honest note: unlike textbook pictures of image networks, these filters don't look like clean edges. Atari screens are simple, and the network only needs
+crude detectors. The weights after 0.5 M frames still correlate 0.78 with the final ones: the first layer changed least during training (see <a href="model.html#training">The model</a>).</p>
+
+<h2>4. What each layer outputs</h2>
+<p>The same moment, layer by layer. Each small square is one map: bright = that filter fires strongly there.
+<b>conv1</b> (32 maps, 20×20): some maps light up along walls and brick rows, others only at the ball and the paddle.
+<b>conv2</b> (64 filters of 4×4 over all 32 maps, stride 2 → 9×9) and <b>conv3</b> (64 filters of 3×3 → 7×7) combine those into fewer, coarser maps.
+Each layer keeps less about exactly <i>where</i>, and more about <i>what</i> is going on.</p>
+<img class="wide" src="viz/maps_conv1.png" alt="conv1 maps">
+<img class="wide" src="viz/maps_conv2.png" alt="conv2 maps">
+<img class="wide" src="viz/maps_conv3.png" alt="conv3 maps">
+<p>Finally, the 64 maps of 7×7 (3,136 numbers) are flattened and fed to a <b>dense layer</b>: 512 outputs, each a weighted sum of all 3,136 inputs.
+At this moment 89 of the 512 are active and the rest are exactly zero. These 512 numbers are the network's whole description of the moment;
+the actor and the critic see nothing else.</p>
+<img class="wide" src="viz/dense.png" alt="the 512 dense outputs">
+
+<h2>5. Where it looks</h2>
+<p>Saliency asks the trained network directly which pixels matter, without opening it up. The recipe is under the pictures.</p>
+
 <p class="muted small" id="snote"></p>
 <div id="moments"></div>
 <div class="box">
@@ -38,6 +93,17 @@ patch positions gives a heat map (the method of Greydanus et al., 2017, "Visuali
 <li><b style="color:#3ca0ff">Critic (blue)</b>: how much the <i>value</i> estimate changes. This is what it looks at to judge how well the game is going.</li></ul>
 <p>Maps are normalised per image: bright means "most important in this picture", not an absolute amount.</p>
 </div>
+
+<h2>Glossary</h2>
+<div class="box"><dl class="gl">
+<dt>pixel</dt><dd>one number in the image grid; here a brightness 0–255</dd>
+<dt>channel</dt><dd>one 2-D grid in a stack: the input has 4 (the 4 pictures), conv1's output has 32</dd>
+<dt>filter (kernel)</dt><dd>a small block of learned weights that is slid over the input; its output is high where the input matches its pattern</dd>
+<dt>stride</dt><dd>how far the filter moves each step (4, 2 and 1 pixels in the three layers)</dd>
+<dt>feature map</dt><dd>the grid of a filter's outputs over all positions: where its pattern appears</dd>
+<dt>ReLU</dt><dd>max(0, x): keeps positive values, sets negatives to zero; it is what lets stacked layers represent more than a single weighted sum</dd>
+<dt>dense layer</dt><dd>every output is a weighted sum of every input (here 3,136 in, 512 out)</dd>
+<dt>saliency</dt><dd>how much the output changes when part of the input is blurred</dd></dl></div>
 </main>
 <script src="site.js?v=c9181741"></script>
 <script src="common.js?v=448bd7f6"></script>
@@ -55,5 +121,9 @@ patch positions gives a heat map (the method of Greydanus et al., 2017, "Visuali
 })();
 </script>
 
+<script>
+document.addEventListener('click', (e) => { const b = e.target.closest('#fpick button'); if (!b) return;
+  document.querySelectorAll('#fpick button').forEach((x) => x.classList.toggle('on', x === b)); $('fimg').src = 'viz/filters_' + b.dataset.f + '.png'; });
+</script>
 </body>
 </html>

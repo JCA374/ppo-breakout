@@ -103,3 +103,7 @@ figure.vid { margin: 14px 0; } figure.vid video { width: 100%; max-width: 860px;
 figure.vid figcaption { color: var(--muted); font-size: .88rem; margin-top: 4px; }
 .frames { display: flex; gap: 8px; flex-wrap: wrap; } .frames figure { margin: 0; text-align: center; font-size: .8rem; color: var(--muted); }
 .frames img { width: 168px; image-rendering: pixelated; border-radius: 6px; border: 1px solid var(--line); display: block; }
+img.wide { width: 100%; max-width: 960px; display: block; margin: 10px 0; border-radius: 8px; background: #fff; }
+dl.gl { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; margin: 12px 0; }
+dl.gl dt { font-weight: 650; } dl.gl dd { margin: 0; }
+figure.vid h3 { margin: 6px 0; }
