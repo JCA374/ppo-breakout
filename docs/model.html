@@ -109,5 +109,12 @@ The learning rate falls linearly from 2.5·10⁻⁴ to 0 (the schedule was stret
 <script src="common.js?v=448bd7f6"></script>
 <script src="project.js?v=e33f46d2"></script>
 
+<script>
+const FILMS = [['ppo1', 'What PPO does', 'The actor-critic loop: collecting rollouts and the careful update.'],
+  ['ppo2', 'Advantages and GAE', 'How each action gets its grade, shown on a real Breakout game from this run.'],
+  ['ppo3', 'The clipped objective', "The clip curve, the probability ratio, and why it keeps updates safe, with this run's real KL and clip fractions."],
+  ['ppo4', 'Watching it learn', 'The same game played after 2, 10, 20 and 40 M frames.']];
+$('films').innerHTML = FILMS.map(([id, t, d]) => `<figure class="vid"><h3>${t}</h3><video src="video/${id}.mp4" controls preload="metadata" playsinline></video><figcaption>${d} Narrated, under 2 minutes; narration checked with Whisper.</figcaption></figure>`).join('');
+</script>
 </body>
 </html>
