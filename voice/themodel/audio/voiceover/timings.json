@@ -1,0 +1,38 @@
+[
+ {
+  "scene": "ch01",
+  "title": "One small network",
+  "file": "ch01.mp3",
+  "seconds": 17.424
+ },
+ {
+  "scene": "ch02",
+  "title": "Two heads, one moment",
+  "file": "ch02.mp3",
+  "seconds": 19.853
+ },
+ {
+  "scene": "ch03",
+  "title": "Over a game",
+  "file": "ch03.mp3",
+  "seconds": 15.752
+ },
+ {
+  "scene": "ch04",
+  "title": "The model's own map",
+  "file": "ch04.mp3",
+  "seconds": 20.898
+ },
+ {
+  "scene": "ch05",
+  "title": "How training shaped it",
+  "file": "ch05.mp3",
+  "seconds": 17.45
+ },
+ {
+  "scene": "ch06",
+  "title": "The whole picture",
+  "file": "ch06.mp3",
+  "seconds": 9.953
+ }
+]

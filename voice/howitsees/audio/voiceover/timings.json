@@ -1,0 +1,38 @@
+[
+ {
+  "scene": "ch01",
+  "title": "Only numbers",
+  "file": "ch01.mp3",
+  "seconds": 17.319
+ },
+ {
+  "scene": "ch02",
+  "title": "Four pictures, one input",
+  "file": "ch02.mp3",
+  "seconds": 12.748
+ },
+ {
+  "scene": "ch03",
+  "title": "The first layer",
+  "file": "ch03.mp3",
+  "seconds": 22.1
+ },
+ {
+  "scene": "ch04",
+  "title": "Layer by layer",
+  "file": "ch04.mp3",
+  "seconds": 19.409
+ },
+ {
+  "scene": "ch05",
+  "title": "A summary of the moment",
+  "file": "ch05.mp3",
+  "seconds": 12.565
+ },
+ {
+  "scene": "ch06",
+  "title": "Where it looks",
+  "file": "ch06.mp3",
+  "seconds": 12.826
+ }
+]

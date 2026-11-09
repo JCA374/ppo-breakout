@@ -1,0 +1,1 @@
+The first layer has thirty two small filters. Each one is eight by eight pixels deep in all four pictures, and it slides across the screen in steps of four. Where the pixels match its pattern, it lights up. Some filters weigh the newest picture against the one before it, with opposite signs. Those are motion detectors. Nobody designed them. Training found them.

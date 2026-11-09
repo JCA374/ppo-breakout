@@ -1,0 +1,1 @@
+It gets the last four pictures at once. One picture can't show motion. But four can: here, the colours mark where the ball was in each one. The trail shows which way it is going, and how fast.

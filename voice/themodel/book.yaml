@@ -1,0 +1,40 @@
+title: Inside the model
+kind: voiceover
+author: ''
+narrator: Kokoro TTS (af_heart)
+narration:
+  narrator: af_heart
+  speed: 1.05
+  paragraph_pause: 0.6
+chapters:
+  ch01: One small network
+  ch02: Two heads, one moment
+  ch03: Over a game
+  ch04: The model's own map
+  ch05: How training shaped it
+  ch06: The whole picture
+sources:
+  ch01:
+    path: /home/jonas/code/games/ppo/video/themodel/script.md
+    sha1: dd848ada0a692dfe42fadf4d0304cd1dff26f3be
+    section: One small network
+  ch02:
+    path: /home/jonas/code/games/ppo/video/themodel/script.md
+    sha1: dd848ada0a692dfe42fadf4d0304cd1dff26f3be
+    section: Two heads, one moment
+  ch03:
+    path: /home/jonas/code/games/ppo/video/themodel/script.md
+    sha1: dd848ada0a692dfe42fadf4d0304cd1dff26f3be
+    section: Over a game
+  ch04:
+    path: /home/jonas/code/games/ppo/video/themodel/script.md
+    sha1: dd848ada0a692dfe42fadf4d0304cd1dff26f3be
+    section: The model's own map
+  ch05:
+    path: /home/jonas/code/games/ppo/video/themodel/script.md
+    sha1: dd848ada0a692dfe42fadf4d0304cd1dff26f3be
+    section: How training shaped it
+  ch06:
+    path: /home/jonas/code/games/ppo/video/themodel/script.md
+    sha1: dd848ada0a692dfe42fadf4d0304cd1dff26f3be
+    section: The whole picture

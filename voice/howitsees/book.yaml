@@ -1,0 +1,40 @@
+title: How it sees
+kind: voiceover
+author: ''
+narrator: Kokoro TTS (af_heart)
+narration:
+  narrator: af_heart
+  speed: 1.05
+  paragraph_pause: 0.6
+chapters:
+  ch01: Only numbers
+  ch02: Four pictures, one input
+  ch03: The first layer
+  ch04: Layer by layer
+  ch05: A summary of the moment
+  ch06: Where it looks
+sources:
+  ch01:
+    path: /home/jonas/code/games/ppo/video/howitsees/script.md
+    sha1: 98ad70993217668c5132349170f58dfe49a726b3
+    section: Only numbers
+  ch02:
+    path: /home/jonas/code/games/ppo/video/howitsees/script.md
+    sha1: 98ad70993217668c5132349170f58dfe49a726b3
+    section: Four pictures, one input
+  ch03:
+    path: /home/jonas/code/games/ppo/video/howitsees/script.md
+    sha1: 98ad70993217668c5132349170f58dfe49a726b3
+    section: The first layer
+  ch04:
+    path: /home/jonas/code/games/ppo/video/howitsees/script.md
+    sha1: 98ad70993217668c5132349170f58dfe49a726b3
+    section: Layer by layer
+  ch05:
+    path: /home/jonas/code/games/ppo/video/howitsees/script.md
+    sha1: 98ad70993217668c5132349170f58dfe49a726b3
+    section: A summary of the moment
+  ch06:
+    path: /home/jonas/code/games/ppo/video/howitsees/script.md
+    sha1: 98ad70993217668c5132349170f58dfe49a726b3
+    section: Where it looks

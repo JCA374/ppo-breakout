@@ -1,0 +1,1 @@
+Compare the weights after half a million frames with the final ones. The first layer changed least: it still looks much like it did early on. The deeper layers changed more, and the heads most of all. The actor's weights grew ten times larger, as the policy became confident.

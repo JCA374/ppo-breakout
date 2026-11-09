@@ -1,0 +1,1 @@
+From the summary, two small heads give the answers. The actor gives a probability for each button. At this moment, fire sixty two percent, do nothing thirty three, left five. The critic gives one number, the value: here about three. That is its guess of the reward still to come, counted in bricks and discounted over time.

@@ -1,0 +1,128 @@
+{
+ "chapter": "ch06",
+ "model": "base.en",
+ "audio": "ch06.wav",
+ "duration": 9.9,
+ "script_sha1": "9f19e06fc6d003229eef314d9628e919d48092ac",
+ "audio_sha1": "f83c7dcdcd0f10f040813c020b9d6f17a6cf9106",
+ "checked": "2026-11-09",
+ "words": [],
+ "pace": [],
+ "stress": [],
+ "seconds": 3,
+ "transcript": [
+  [
+   " So",
+   0.0
+  ],
+  [
+   " pixels",
+   0.4
+  ],
+  [
+   " go",
+   0.58
+  ],
+  [
+   " in,",
+   1.0
+  ],
+  [
+   " patterns",
+   1.5
+  ],
+  [
+   " are",
+   1.72
+  ],
+  [
+   " found,",
+   2.02
+  ],
+  [
+   " a",
+   2.68
+  ],
+  [
+   " summary",
+   2.74
+  ],
+  [
+   " is",
+   3.04
+  ],
+  [
+   " formed,",
+   3.3
+  ],
+  [
+   " and",
+   3.88
+  ],
+  [
+   " two",
+   3.92
+  ],
+  [
+   " heads",
+   4.1
+  ],
+  [
+   " read",
+   4.34
+  ],
+  [
+   " it,",
+   4.56
+  ],
+  [
+   " one",
+   5.22
+  ],
+  [
+   " to",
+   5.36
+  ],
+  [
+   " act,",
+   5.5
+  ],
+  [
+   " one",
+   6.0
+  ],
+  [
+   " to",
+   6.1
+  ],
+  [
+   " judge.",
+   6.24
+  ],
+  [
+   " Everything",
+   7.38
+  ],
+  [
+   " else",
+   7.38
+  ],
+  [
+   " is",
+   7.72
+  ],
+  [
+   " learned",
+   7.94
+  ],
+  [
+   " from",
+   8.16
+  ],
+  [
+   " points.",
+   8.4
+  ]
+ ],
+ "dismissed": []
+}

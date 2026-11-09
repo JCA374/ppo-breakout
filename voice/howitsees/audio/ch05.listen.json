@@ -1,0 +1,136 @@
+{
+ "chapter": "ch05",
+ "model": "base.en",
+ "audio": "ch05.wav",
+ "duration": 12.5,
+ "script_sha1": "1cf4fae3b34aa51caf758954dd977d0b71415e0a",
+ "audio_sha1": "6e5a3fcbf8db462f8ddb695bf5bd57e8f3eb2d62",
+ "checked": "2026-11-09",
+ "words": [],
+ "pace": [],
+ "stress": [],
+ "seconds": 3,
+ "transcript": [
+  [
+   " Then",
+   0.0
+  ],
+  [
+   " everything",
+   0.38
+  ],
+  [
+   " is",
+   0.74
+  ],
+  [
+   " squeezed",
+   1.04
+  ],
+  [
+   " into",
+   1.32
+  ],
+  [
+   " 512",
+   1.76
+  ],
+  [
+   " numbers.",
+   2.18
+  ],
+  [
+   " At",
+   4.1
+  ],
+  [
+   " this",
+   4.14
+  ],
+  [
+   " moment,",
+   4.28
+  ],
+  [
+   " 89",
+   4.96
+  ],
+  [
+   " of",
+   5.28
+  ],
+  [
+   " them",
+   5.6
+  ],
+  [
+   " are",
+   5.72
+  ],
+  [
+   " active,",
+   5.8
+  ],
+  [
+   " and",
+   6.7
+  ],
+  [
+   " the",
+   6.78
+  ],
+  [
+   " rest",
+   6.88
+  ],
+  [
+   " are",
+   7.04
+  ],
+  [
+   " exactly",
+   7.38
+  ],
+  [
+   " zero.",
+   7.72
+  ],
+  [
+   " Both",
+   8.92
+  ],
+  [
+   " heads",
+   9.08
+  ],
+  [
+   " of",
+   9.34
+  ],
+  [
+   " the",
+   9.5
+  ],
+  [
+   " network",
+   9.6
+  ],
+  [
+   " read",
+   9.84
+  ],
+  [
+   " only",
+   10.18
+  ],
+  [
+   " this",
+   10.66
+  ],
+  [
+   " summary.",
+   10.84
+  ]
+ ],
+ "dismissed": []
+}

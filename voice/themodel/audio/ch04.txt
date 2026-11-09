@@ -1,0 +1,1 @@
+Take the five hundred and twelve numbers for every moment of a game, and flatten them onto a page. They form two groups. One is the early game, with most of the wall still standing and a high value. The other is the late game, with only a few bricks left and a low value. Nobody told the network about game phases. It separated them on its own.
