@@ -80,3 +80,5 @@
 {"t": "2026-11-09 05:11:54", "kind": "checkpoint", "frames": 38502400, "path": "checkpoints/main/model_038502k.pt", "score": ""}
 {"t": "2026-11-09 05:18:28", "kind": "checkpoint", "frames": 39002112, "path": "checkpoints/main/model_039002k.pt", "score": 412.0}
 {"t": "2026-11-09 05:25:19", "kind": "checkpoint", "frames": 39501824, "path": "checkpoints/main/model_039501k.pt", "score": ""}
+{"t": "2026-11-09 05:32:37", "kind": "checkpoint", "frames": 39997440, "path": "checkpoints/main/model_039997k.pt", "score": 370.0}
+{"t": "2026-11-09 05:32:37", "kind": "run_end", "frames": 39997440}
