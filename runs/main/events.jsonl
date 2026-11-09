@@ -74,3 +74,6 @@
 {"t": "2026-11-09 04:28:53", "kind": "checkpoint", "frames": 35500032, "path": "checkpoints/main/model_035500k.pt", "score": 426.0}
 {"t": "2026-11-09 04:35:53", "kind": "checkpoint", "frames": 36003840, "path": "checkpoints/main/model_036003k.pt", "score": "", "champion": "checkpoints/main/model_036003k.pt"}
 {"t": "2026-11-09 04:42:26", "kind": "checkpoint", "frames": 36503552, "path": "checkpoints/main/model_036503k.pt", "score": ""}
+{"t": "2026-11-09 04:49:14", "kind": "checkpoint", "frames": 37003264, "path": "checkpoints/main/model_037003k.pt", "score": ""}
+{"t": "2026-11-09 04:55:48", "kind": "checkpoint", "frames": 37502976, "path": "checkpoints/main/model_037502k.pt", "score": 378.0}
+{"t": "2026-11-09 05:03:28", "kind": "checkpoint", "frames": 38002688, "path": "checkpoints/main/model_038002k.pt", "score": "", "champion": "checkpoints/main/model_038002k.pt"}
