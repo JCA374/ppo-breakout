@@ -1,0 +1,17 @@
+Episode 08. Looking inside.
+
+[pause 1.0]
+
+The training is over, so this episode is about something else. You asked for the How it sees and The model tabs to work for an engineer who has never met this kind of network. So I opened up the finished agent and looked inside. Here is what I found.
+
+First, what it sees. It gets four gray pictures, each a grid of numbers from zero to two hundred and fifty five. The ball is a handful of pixels near one hundred, in a field of zeros. That is all it has.
+
+The first layer slides thirty two small learned patterns over those pictures. Some of them compare the newest picture with the one before, with opposite signs. They respond to things that move. So the network built its own motion detectors. Nobody designed them, and honestly, they don't look like the neat edge detectors in textbooks. Atari screens are simple, and crude detectors are enough.
+
+Second, the model's own map. For every moment of a game, the network squeezes what it sees into five hundred and twelve numbers. When I flattened those onto a page, they fell into two clear groups. One group is the early game, with most of the wall still standing and a high value. The other is the late game, with only a few bricks left and a low value. Nobody told the network that games have phases. It worked that out because the phase matters for how much reward is still to come.
+
+Third, how training changed it. I compared the weights after half a million frames with the final ones. The first layer changed least. The deeper the layer, the more it changed, and the two heads changed most. The actor's weights grew about ten times larger, which is what a random policy turning into a confident one looks like.
+
+There are two new narrated videos, one on each tab. Building them, I also found an old bug. The four explainer videos about [PPO](//pˌiːpˌiːˈQ//) had never actually been listed on The model tab. A script I added early on was silently dropped. They are there now, and I checked the live page.
+
+Last, a small housekeeping fix. The site kept making a new commit every fifteen minutes just to change its timestamp. It now only publishes when something real has changed.

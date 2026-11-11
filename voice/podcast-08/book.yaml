@@ -1,0 +1,14 @@
+title: 'Episode 08: Looking inside'
+kind: prose
+author: ''
+narrator: Kokoro TTS (af_heart)
+narration:
+  narrator: af_heart
+  speed: 0.95
+  paragraph_pause: 0.6
+chapters:
+  ch01: 'Episode 08: Looking inside'
+sources:
+  ch01:
+    path: /home/jonas/code/games/ppo/podcast/episode-08.md
+    sha1: 8576b245b7e79ed574ffc3fad67414267db6f2c7
