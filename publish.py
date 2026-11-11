@@ -186,6 +186,18 @@ def push():
                 subprocess.run(['git', 'add', '-f', f])
     if subprocess.run(['git', 'diff', '--cached', '--quiet']).returncode == 0:
         return print('nothing to publish')
+    # local change: skip a commit whose only change is status.json's "updated" timestamp (no new data)
+    changed = subprocess.run(['git', 'diff', '--cached', '--name-only'], capture_output=True, text=True).stdout.split()
+    if changed == ['docs/data/status.json']:
+        old = subprocess.run(['git', 'show', 'HEAD:docs/data/status.json'], capture_output=True, text=True).stdout
+        try:
+            a, b = json.loads(old), json.load(open(os.path.join(DOCS, 'data', 'status.json')))
+            a.pop('updated', None); b.pop('updated', None)
+            if a == b:
+                subprocess.run(['git', 'reset', '-q', 'docs/data/status.json'])
+                return print('only the timestamp changed: nothing to publish')
+        except ValueError:
+            pass
     subprocess.run(['git', 'commit', '-q', '-m', f'Site update {time.strftime("%Y-%m-%d %H:%M")}'], check=True)
     if subprocess.run(['git', 'push', '-q'], check=False).returncode != 0:
         subprocess.run(['git', 'pull', '-q', '--no-rebase', '--no-edit'], check=False)
